@@ -619,7 +619,7 @@ Transform:
   m_GameObject: {fileID: 805815463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.58, y: -7.15, z: 9.64}
+  m_LocalPosition: {x: 0.58, y: -7.35, z: 9.64}
   m_LocalScale: {x: 1.8, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -638,6 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  ball: {fileID: 1915003914}
 --- !u!1 &915825190
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +932,7 @@ Transform:
   m_GameObject: {fileID: 1915003914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.62, y: -2.36, z: 9.9}
+  m_LocalPosition: {x: 0.6, y: -6.92, z: 9.6}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
