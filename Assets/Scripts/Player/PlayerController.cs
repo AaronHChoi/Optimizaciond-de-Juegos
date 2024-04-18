@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
         if (!_ballIsMoving)
             ball.transform.position = new Vector3(transform.position.x, transform.position.y + _ballYDistance, transform.position.z);
     }
+    public void SetBallMoving(bool isMoving)
+    {
+        _ballIsMoving = isMoving;
+    }
     void BallStartPosition()
     {
         float playerXPosition = transform.position.x;
