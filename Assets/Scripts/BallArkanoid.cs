@@ -27,9 +27,11 @@ public class BallArkanoid : MonoBehaviour
 
     private void DetectCollision()
     {
-        if (transform.position.y >= _topEdge.transform.position.y)
+        if(transform.position.y <= _playerController.transform.position.y +0.4f)
             _direction.y *= -1;
-        if (transform.position.x >= _rightEdge.transform.position.x || transform.position.x <= _leftEdge.transform.position.x)
+        if (transform.position.y >= _topEdge.transform.position.y - 0.4f)
+            _direction.y *= -1;
+        if (transform.position.x >= _rightEdge.transform.position.x -0.4f || transform.position.x <= _leftEdge.transform.position.x + 0.4f)
             _direction.x *= -1;
     }
 

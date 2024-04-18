@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7d98c6e325b3b49ae817cd621735b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ballSpeed: 1
+  _ballSpeed: 5
   _playerController: {fileID: 805815468}
   _topEdge: {fileID: 2013691945}
   _rightEdge: {fileID: 1506569860}
