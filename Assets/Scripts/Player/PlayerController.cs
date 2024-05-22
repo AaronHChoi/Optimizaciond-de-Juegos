@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //Velocidad de la paleta
-    [SerializeField] private float _speed = 5f;
-
+    [SerializeField] private float moveSpeed;
+    private float bounds = 7f;
     private void Update()
     {
         Move();
     }
-    void Move()
+    private void Move()
     {
-        float movement = 0f;
-        if (Input.GetKey(KeyCode.LeftArrow))
-            movement = -1f;
-        else if (Input.GetKey(KeyCode.RightArrow))
-            movement = 1f;
+        float moveInput = Input.GetAxisRaw("Horizontal");
 
-        Vector3 movementVector = new Vector3(movement, 0f, 0f) * _speed * Time.deltaTime;
-
-        transform.Translate(movementVector);
+        Vector3 playerPosition = transform.position;
+        playerPosition.x = Mathf.Clamp(playerPosition.x + moveInput * moveSpeed * Time.deltaTime, -bounds, bounds); ;
+        transform.position = playerPosition;
     }
 }
