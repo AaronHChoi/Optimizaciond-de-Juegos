@@ -4,43 +4,63 @@ using UnityEngine;
 
 public class BallArkanoid : MonoBehaviour
 {
-    [SerializeField] private float _ballSpeed = 5f;
-    private Vector3 _direction = Vector3.zero;
+    [SerializeField] private Vector2 initialVelocity;
+    [SerializeField] private float constantSpeed = 7.0f;
 
-    public PlayerController _playerController;
-    public GameObject _topEdge;
-    public GameObject _rightEdge;
-    public GameObject _leftEdge;
+    private Rigidbody ballRb;
+    private bool isBallMoving;
     private void Start()
     {
-        _direction = new Vector2(Random.Range(-0.5f, 0.5f), 1).normalized;
+        ballRb = GetComponent<Rigidbody>();
     }
-
     private void Update()
     {
-        transform.Translate(_direction * _ballSpeed * Time.deltaTime);
-
-        DetectCollision();
-
-        BallLaunch();
-    }
-
-    private void DetectCollision()
-    {
-        if(transform.position.y <= _playerController.transform.position.y +0.4f)
-            _direction.y *= -1;
-        if (transform.position.y >= _topEdge.transform.position.y - 0.4f)
-            _direction.y *= -1;
-        if (transform.position.x >= _rightEdge.transform.position.x -0.4f || transform.position.x <= _leftEdge.transform.position.x + 0.4f)
-            _direction.x *= -1;
-    }
-
-    private void BallLaunch()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && !isBallMoving)
         {
-            _playerController.SetBallMoving(true);
-            _direction = new Vector2(Random.Range(-0.5f, 0.5f), 1).normalized;
-        } 
+            LaunchBall();
+        }
+    }
+    private void LaunchBall()
+    {
+        transform.parent = null;
+        ballRb.velocity = initialVelocity.normalized * constantSpeed;
+        isBallMoving = true;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            Destroy(collision.gameObject);
+            GameManager.Instance.BlockDestroyed();
+        }
+        if (collision.gameObject.CompareTag("Top"))
+        {
+            ballRb.velocity = new Vector3(ballRb.velocity.x, -Mathf.Abs(ballRb.velocity.y), ballRb.velocity.z);
+        }
+        VelocityFix();
+    }
+    private void VelocityFix()
+    {
+        Vector3 velocity = ballRb.velocity;
+
+        if (Mathf.Abs(velocity.x) < Mathf.Epsilon)
+        {
+            velocity.x = Random.Range(-1f, 1f) * constantSpeed;
+        }
+        if (Mathf.Abs(velocity.y) < Mathf.Epsilon)
+        {
+            velocity.y = Random.Range(-1f, 1f) * constantSpeed;
+        }
+
+        if (Mathf.Abs(velocity.x) > Mathf.Abs(velocity.y) * 2)
+        {
+            velocity.y += Random.Range(0.5f, 1f) * Mathf.Sign(velocity.y == 0 ? 1 : velocity.y);
+        }
+        if (Mathf.Abs(velocity.y) > Mathf.Abs(velocity.x) * 2)
+        {
+            velocity.x += Random.Range(0.5f, 1f) * Mathf.Sign(velocity.x == 0 ? 1 : velocity.x);
+        }
+
+        ballRb.velocity = velocity.normalized * constantSpeed;
     }
 }
