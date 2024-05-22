@@ -14,7 +14,12 @@ public class PlayerController : MonoBehaviour
     {
         BallStartPosition();
     }
-    private void Update()
+    //private void Update()
+    //{
+    //    Move();
+    //}
+
+    public void CustomUpdate()
     {
         Move();
     }

@@ -16,7 +16,16 @@ public class BallArkanoid : MonoBehaviour
         _direction = new Vector2(Random.Range(-0.5f, 0.5f), 1).normalized;
     }
 
-    private void Update()
+    //private void Update()
+    //{
+    //    transform.Translate(_direction * _ballSpeed * Time.deltaTime);
+
+    //    DetectCollision();
+
+    //    BallLaunch();
+    //}
+
+    public void CustomUpdate()
     {
         transform.Translate(_direction * _ballSpeed * Time.deltaTime);
 
