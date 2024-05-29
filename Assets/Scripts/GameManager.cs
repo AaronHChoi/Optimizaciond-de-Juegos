@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int blockLeft;
+    public int blockLeft;
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         blockLeft = GameObject.FindGameObjectsWithTag("Block").Length;
+        Debug.Log(blockLeft);
     }
     public void BlockDestroyed()
     {

@@ -8,7 +8,7 @@ public class CustomUpdateManager : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     private void Update()
     {
-        ballArkanoid.CustomUpdate();
-        playerController.CustomUpdate();
+        //ballArkanoid.CustomUpdate();
+        //playerController.CustomUpdate();
     }
 }

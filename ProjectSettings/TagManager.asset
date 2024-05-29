@@ -10,6 +10,10 @@ TagManager:
   - Left
   - PlayerLeft
   - PlayerRight
+  - BlockBottom
+  - BlockTop
+  - BlockRight
+  - BlockLeft
   layers:
   - Default
   - TransparentFX
