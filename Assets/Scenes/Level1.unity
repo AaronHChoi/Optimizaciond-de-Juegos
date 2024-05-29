@@ -605,6 +605,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2840951921598886040, guid: f3537e64ae446694ab1b8acdcc0d8fb7, type: 3}
+      propertyPath: m_TagString
+      value: Right
+      objectReference: {fileID: 0}
     - target: {fileID: 3196875868119106404, guid: f3537e64ae446694ab1b8acdcc0d8fb7, type: 3}
       propertyPath: m_TagString
       value: Top
@@ -612,6 +616,10 @@ PrefabInstance:
     - target: {fileID: 7933730871572507755, guid: f3537e64ae446694ab1b8acdcc0d8fb7, type: 3}
       propertyPath: m_Name
       value: Scenario
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129176182926064981, guid: f3537e64ae446694ab1b8acdcc0d8fb7, type: 3}
+      propertyPath: m_TagString
+      value: Left
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
