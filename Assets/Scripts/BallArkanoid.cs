@@ -23,7 +23,7 @@ public class BallArkanoid : MonoBehaviour
     private void LaunchBall()
     {
         transform.parent = null;
-        ballRb.velocity = initialVelocity.normalized * constantSpeed;
+        ballRb.velocity = initialVelocity;
         isBallMoving = true;
     }
     private void OnCollisionEnter(Collision collision)
@@ -35,40 +35,72 @@ public class BallArkanoid : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Top"))
         {
-            ballRb.velocity = new Vector3(ballRb.velocity.x, -Mathf.Abs(ballRb.velocity.y), ballRb.velocity.z);
+            if(initialVelocity.x < 0) // si la pelota viene de derecha y abajo
+            {
+                initialVelocity.x = -4;
+                initialVelocity.y = -6;
+                ballRb.velocity = initialVelocity;
+            }
+            if (initialVelocity.x > 0) // si la pelota viene de izquierda y abajo
+            {
+                initialVelocity.x = 4;
+                initialVelocity.y = -6;
+                ballRb.velocity = initialVelocity;
+            }
+            if (initialVelocity.x == 0) // si la pelota viene de izquierda y abajo
+            {
+                initialVelocity.x = 0;
+                initialVelocity.y = -6;
+                ballRb.velocity = initialVelocity;
+            }
         }
         if (collision.gameObject.CompareTag("Right"))
         {
-
+            if(initialVelocity.y > 0) // de abajo para arriba
+            {
+                initialVelocity.x = -4;
+                initialVelocity.y = 6;
+                ballRb.velocity = initialVelocity;
+            }
+            if (initialVelocity.y < 0) // de arriba para abajo
+            {
+                initialVelocity.x = -4;
+                initialVelocity.y = -6;
+                ballRb.velocity = initialVelocity;
+            }
         }
         if (collision.gameObject.CompareTag("Left"))
         {
-
+            if (initialVelocity.y > 0) // de abajo para arriba
+            {
+                initialVelocity.x = 4;
+                initialVelocity.y = 6;
+                ballRb.velocity = initialVelocity;
+            }
+            if (initialVelocity.y < 0) // de arriba para abajo
+            {
+                initialVelocity.x = 4;
+                initialVelocity.y = -6;
+                ballRb.velocity = initialVelocity;
+            }
         }
-        VelocityFix();
-    }
-    private void VelocityFix()
-    {
-        Vector3 velocity = ballRb.velocity;
-
-        if (Mathf.Abs(velocity.x) < Mathf.Epsilon)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            velocity.x = Random.Range(-1f, 1f) * constantSpeed;
+            initialVelocity.x = 0;
+            initialVelocity.y = 6;
+            ballRb.velocity = initialVelocity;
         }
-        if (Mathf.Abs(velocity.y) < Mathf.Epsilon)
+        if (collision.gameObject.CompareTag("PlayerLeft"))
         {
-            velocity.y = Random.Range(-1f, 1f) * constantSpeed;
+            initialVelocity.x = -4;
+            initialVelocity.y = 6;
+            ballRb.velocity = initialVelocity;
         }
-
-        if (Mathf.Abs(velocity.x) > Mathf.Abs(velocity.y) * 2)
+        if (collision.gameObject.CompareTag("PlayerRight"))
         {
-            velocity.y += Random.Range(0.5f, 1f) * Mathf.Sign(velocity.y == 0 ? 1 : velocity.y);
+            initialVelocity.x = 4;
+            initialVelocity.y = 6;
+            ballRb.velocity = initialVelocity;
         }
-        if (Mathf.Abs(velocity.y) > Mathf.Abs(velocity.x) * 2)
-        {
-            velocity.x += Random.Range(0.5f, 1f) * Mathf.Sign(velocity.x == 0 ? 1 : velocity.x);
-        }
-
-        ballRb.velocity = velocity.normalized * constantSpeed;
     }
 }

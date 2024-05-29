@@ -8,6 +8,8 @@ TagManager:
   - Top
   - Right
   - Left
+  - PlayerLeft
+  - PlayerRight
   layers:
   - Default
   - TransparentFX
