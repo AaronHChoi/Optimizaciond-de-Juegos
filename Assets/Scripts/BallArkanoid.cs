@@ -4,52 +4,85 @@ using UnityEngine;
 
 public class BallArkanoid : MonoBehaviour
 {
-    [SerializeField] private float _ballSpeed = 5f;
-    private Vector3 _direction = Vector3.zero;
+    [SerializeField] private Vector2 initialVelocity;
 
-    public PlayerController _playerController;
-    public GameObject _topEdge;
-    public GameObject _rightEdge;
-    public GameObject _leftEdge;
+    private Rigidbody ballRb;
+    private bool isBallMoving;
     private void Start()
     {
-        _direction = new Vector2(Random.Range(-0.5f, 0.5f), 1).normalized;
+        ballRb = GetComponent<Rigidbody>();
     }
-
-    //private void Update()
-    //{
-    //    transform.Translate(_direction * _ballSpeed * Time.deltaTime);
-
-    //    DetectCollision();
-
-    //    BallLaunch();
-    //}
-
-    public void CustomUpdate()
+    private void Update()
     {
-        transform.Translate(_direction * _ballSpeed * Time.deltaTime);
-
-        DetectCollision();
-
-        BallLaunch();
-    }
-
-    private void DetectCollision()
-    {
-        if(transform.position.y <= _playerController.transform.position.y +0.4f)
-            _direction.y *= -1;
-        if (transform.position.y >= _topEdge.transform.position.y - 0.4f)
-            _direction.y *= -1;
-        if (transform.position.x >= _rightEdge.transform.position.x -0.4f || transform.position.x <= _leftEdge.transform.position.x + 0.4f)
-            _direction.x *= -1;
-    }
-
-    private void BallLaunch()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && !isBallMoving)
         {
-            _playerController.SetBallMoving(true);
-            _direction = new Vector2(Random.Range(-0.5f, 0.5f), 1).normalized;
-        } 
+            LaunchBall();
+        }
+    }
+    private void LaunchBall()
+    {
+        transform.parent = null;
+        ballRb.velocity = initialVelocity;
+        isBallMoving = true;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "BlockTop":
+                UpdateVelocity(new Vector2(initialVelocity.x, 6));
+                DestroyBlock(collision);
+                break;
+
+            case "BlockBottom":
+                UpdateVelocity(new Vector2(initialVelocity.x, -6));
+                DestroyBlock(collision);
+                break;
+
+            case "BlockRight":
+                UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
+                DestroyBlock(collision);
+                break;
+
+            case "BlockLeft":
+                UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
+                DestroyBlock(collision);
+                break;
+
+            case "Top":
+                UpdateVelocity(new Vector2(initialVelocity.x, -6));
+                break;
+
+            case "Right":
+                UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
+                break;
+
+            case "Left":
+                UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
+                break;
+
+            case "Player":
+                UpdateVelocity(new Vector2(0, 6));
+                break;
+
+            case "PlayerLeft":
+                UpdateVelocity(new Vector2(-4, 6));
+                break;
+
+            case "PlayerRight":
+                UpdateVelocity(new Vector2(4, 6));
+                break;
+        }
+    }
+    private void UpdateVelocity(Vector2 newVelocity)
+    {
+        initialVelocity = newVelocity;
+        ballRb.velocity = initialVelocity;
+    }
+    private void DestroyBlock(Collision collision)
+    {
+        Destroy(collision.transform.parent.gameObject);
+        GameManager.Instance.BlockDestroyed();
+        Debug.Log(GameManager.Instance.blockLeft);
     }
 }
