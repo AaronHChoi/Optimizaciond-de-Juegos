@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: {x: 4, y: 6}
-  constantSpeed: 7
 --- !u!54 &2018353002711255227
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -358,6 +357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRight
       objectReference: {fileID: 0}
+    - target: {fileID: 3896237650428719729, guid: 16ca235e00acb9a45b08b73b17d93f39, type: 3}
+      propertyPath: m_TagString
+      value: PlayerRight
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4155107659897012512, guid: 16ca235e00acb9a45b08b73b17d93f39, type: 3}
     m_RemovedGameObjects:
@@ -430,6 +433,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3896237650428719729, guid: 16ca235e00acb9a45b08b73b17d93f39, type: 3}
       propertyPath: m_Name
+      value: PlayerLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896237650428719729, guid: 16ca235e00acb9a45b08b73b17d93f39, type: 3}
+      propertyPath: m_TagString
       value: PlayerLeft
       objectReference: {fileID: 0}
     m_RemovedComponents:

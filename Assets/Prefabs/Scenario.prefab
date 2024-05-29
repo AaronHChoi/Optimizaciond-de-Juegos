@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 6998117504405524896}
   m_Layer: 0
   m_Name: RightEdge
-  m_TagString: Untagged
+  m_TagString: Right
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 571128027084607856}
   m_Layer: 0
   m_Name: TopEdge
-  m_TagString: Untagged
+  m_TagString: Top
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 9059465404235211658}
   m_Layer: 0
   m_Name: LeftEdge
-  m_TagString: Untagged
+  m_TagString: Left
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

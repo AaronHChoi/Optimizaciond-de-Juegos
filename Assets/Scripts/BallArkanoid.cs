@@ -5,7 +5,6 @@ using UnityEngine;
 public class BallArkanoid : MonoBehaviour
 {
     [SerializeField] private Vector2 initialVelocity;
-    [SerializeField] private float constantSpeed = 7.0f;
 
     private Rigidbody ballRb;
     private bool isBallMoving;
@@ -28,79 +27,62 @@ public class BallArkanoid : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Block"))
+        switch (collision.gameObject.tag)
         {
-            Destroy(collision.gameObject);
-            GameManager.Instance.BlockDestroyed();
+            case "BlockTop":
+                UpdateVelocity(new Vector2(initialVelocity.x, 6));
+                DestroyBlock(collision);
+                break;
+
+            case "BlockBottom":
+                UpdateVelocity(new Vector2(initialVelocity.x, -6));
+                DestroyBlock(collision);
+                break;
+
+            case "BlockRight":
+                UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
+                DestroyBlock(collision);
+                break;
+
+            case "BlockLeft":
+                UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
+                DestroyBlock(collision);
+                break;
+
+            case "Top":
+                UpdateVelocity(new Vector2(initialVelocity.x, -6));
+                break;
+
+            case "Right":
+                UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
+                break;
+
+            case "Left":
+                UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
+                break;
+
+            case "Player":
+                UpdateVelocity(new Vector2(0, 6));
+                break;
+
+            case "PlayerLeft":
+                UpdateVelocity(new Vector2(-4, 6));
+                break;
+
+            case "PlayerRight":
+                UpdateVelocity(new Vector2(4, 6));
+                break;
         }
-        if (collision.gameObject.CompareTag("Top"))
-        {
-            if(initialVelocity.x < 0) // si la pelota viene de derecha y abajo
-            {
-                initialVelocity.x = -4;
-                initialVelocity.y = -6;
-                ballRb.velocity = initialVelocity;
-            }
-            if (initialVelocity.x > 0) // si la pelota viene de izquierda y abajo
-            {
-                initialVelocity.x = 4;
-                initialVelocity.y = -6;
-                ballRb.velocity = initialVelocity;
-            }
-            if (initialVelocity.x == 0) // si la pelota viene de izquierda y abajo
-            {
-                initialVelocity.x = 0;
-                initialVelocity.y = -6;
-                ballRb.velocity = initialVelocity;
-            }
-        }
-        if (collision.gameObject.CompareTag("Right"))
-        {
-            if(initialVelocity.y > 0) // de abajo para arriba
-            {
-                initialVelocity.x = -4;
-                initialVelocity.y = 6;
-                ballRb.velocity = initialVelocity;
-            }
-            if (initialVelocity.y < 0) // de arriba para abajo
-            {
-                initialVelocity.x = -4;
-                initialVelocity.y = -6;
-                ballRb.velocity = initialVelocity;
-            }
-        }
-        if (collision.gameObject.CompareTag("Left"))
-        {
-            if (initialVelocity.y > 0) // de abajo para arriba
-            {
-                initialVelocity.x = 4;
-                initialVelocity.y = 6;
-                ballRb.velocity = initialVelocity;
-            }
-            if (initialVelocity.y < 0) // de arriba para abajo
-            {
-                initialVelocity.x = 4;
-                initialVelocity.y = -6;
-                ballRb.velocity = initialVelocity;
-            }
-        }
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            initialVelocity.x = 0;
-            initialVelocity.y = 6;
-            ballRb.velocity = initialVelocity;
-        }
-        if (collision.gameObject.CompareTag("PlayerLeft"))
-        {
-            initialVelocity.x = -4;
-            initialVelocity.y = 6;
-            ballRb.velocity = initialVelocity;
-        }
-        if (collision.gameObject.CompareTag("PlayerRight"))
-        {
-            initialVelocity.x = 4;
-            initialVelocity.y = 6;
-            ballRb.velocity = initialVelocity;
-        }
+    }
+    private void UpdateVelocity(Vector2 newVelocity)
+    {
+        initialVelocity = newVelocity;
+        ballRb.velocity = initialVelocity;
+    }
+    private void DestroyBlock(Collision collision)
+    {
+        Destroy(collision.transform.parent.gameObject);
+        GameManager.Instance.BlockDestroyed();
+        Debug.Log(GameManager.Instance.blockLeft);
     }
 }
