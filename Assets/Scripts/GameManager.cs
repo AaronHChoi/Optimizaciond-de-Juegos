@@ -1,37 +1,38 @@
+using JetBrains.Annotations;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 0;
-
-    public int lives = 3;
-
-    public Text scoreText;
-
-    public Text livesText;
-
+    private int blockLeft;
+    public static GameManager Instance { get; private set; }
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if(Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
     }
-
     private void Start()
     {
-        // Load the main menu scene
-        
+        blockLeft = GameObject.FindGameObjectsWithTag("Block").Length;
     }
-
-    private void Update()
+    public void BlockDestroyed()
     {
-        scoreText.text = "Score: " + score;
-
-        livesText.text = "Lives: " + lives;
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        blockLeft--;
+        if(blockLeft <= 0)
         {
-            Application.Quit();
+            LoadNextLevel();
         }
     }
-    
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
