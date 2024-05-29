@@ -37,6 +37,14 @@ public class BallArkanoid : MonoBehaviour
         {
             ballRb.velocity = new Vector3(ballRb.velocity.x, -Mathf.Abs(ballRb.velocity.y), ballRb.velocity.z);
         }
+        if (collision.gameObject.CompareTag("Right"))
+        {
+
+        }
+        if (collision.gameObject.CompareTag("Left"))
+        {
+
+        }
         VelocityFix();
     }
     private void VelocityFix()
