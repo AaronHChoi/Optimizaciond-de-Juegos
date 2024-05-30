@@ -27,26 +27,28 @@ public class BallArkanoid : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Brick brick = collision.transform.parent?.GetComponent<Brick>();
+
         switch (collision.gameObject.tag)
         {
             case "BlockTop":
                 UpdateVelocity(new Vector2(initialVelocity.x, 6));
-                DestroyBlock(collision);
+                DestroyBlock(brick, collision);
                 break;
 
             case "BlockBottom":
                 UpdateVelocity(new Vector2(initialVelocity.x, -6));
-                DestroyBlock(collision);
+                DestroyBlock(brick, collision);
                 break;
 
             case "BlockRight":
                 UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
-                DestroyBlock(collision);
+                DestroyBlock(brick, collision);
                 break;
 
             case "BlockLeft":
                 UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
-                DestroyBlock(collision);
+                DestroyBlock(brick, collision);
                 break;
 
             case "Top":
@@ -79,10 +81,15 @@ public class BallArkanoid : MonoBehaviour
         initialVelocity = newVelocity;
         ballRb.velocity = initialVelocity;
     }
-    private void DestroyBlock(Collision collision)
+    private void DestroyBlock(Brick brick, Collision collision)
     {
-        Destroy(collision.transform.parent.gameObject);
-        GameManager.Instance.BlockDestroyed();
-        Debug.Log(GameManager.Instance.blockLeft);
+        if(brick != null && !brick.isDestroyed)
+        {
+            brick.isDestroyed = true;
+            Destroy(collision.transform.parent.gameObject);
+            GameManager.Instance.BlockDestroyed();
+            Debug.Log(GameManager.Instance.blockLeft);
+        }
+        
     }
 }
