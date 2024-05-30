@@ -74,7 +74,7 @@ public class BallArkanoid : MonoBehaviour
             case "PlayerRight":
                 UpdateVelocity(new Vector2(4, 6));
                 break;
-        }
+        }     
     }
     private void UpdateVelocity(Vector2 newVelocity)
     {
@@ -92,4 +92,6 @@ public class BallArkanoid : MonoBehaviour
         }
         
     }
+
+   
 }
