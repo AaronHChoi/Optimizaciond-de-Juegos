@@ -3,10 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public int blockLeft;
+
+    public HUD hud;
+
+    private int lives = 3;
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -14,6 +19,7 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
+
     }
     private void Start()
     {
@@ -32,8 +38,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void ReloadScene()
+    public void ResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if(lives <= 0)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void LoseLife()
+    {
+        lives--;
+        hud.DeactivateLife(lives);
     }
 }

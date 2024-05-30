@@ -6,6 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     private float bounds = 7f;
+    private Vector3 initialPosition;
+    private void Start()
+    {
+        initialPosition = transform.position;
+    }
     private void Update()
     {
         Move();
@@ -17,5 +22,9 @@ public class PlayerController : MonoBehaviour
         Vector3 playerPosition = transform.position;
         playerPosition.x = Mathf.Clamp(playerPosition.x + moveInput * moveSpeed * Time.deltaTime, -bounds, bounds); ;
         transform.position = playerPosition;
+    }
+    public void ResetPosition()
+    {
+        transform.position = initialPosition;
     }
 }
