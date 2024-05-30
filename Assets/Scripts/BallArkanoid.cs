@@ -6,11 +6,15 @@ public class BallArkanoid : MonoBehaviour
 {
     [SerializeField] private Vector2 initialVelocity;
 
+    [SerializeField]PlayerController playerController;
     private Rigidbody ballRb;
     private bool isBallMoving;
+    private Vector3 initialPosition;
     private void Start()
     {
         ballRb = GetComponent<Rigidbody>();
+        //playerController = GetComponent<PlayerController>();
+        initialPosition = transform.position;
     }
     private void Update()
     {
@@ -74,7 +78,7 @@ public class BallArkanoid : MonoBehaviour
             case "PlayerRight":
                 UpdateVelocity(new Vector2(4, 6));
                 break;
-        }     
+        }
     }
     private void UpdateVelocity(Vector2 newVelocity)
     {
@@ -92,6 +96,11 @@ public class BallArkanoid : MonoBehaviour
         }
         
     }
-
-   
+    public void ResetBall()
+    {
+        ballRb.velocity = Vector3.zero;
+        transform.position = initialPosition;
+        transform.parent = playerController.transform;
+        isBallMoving = false;
+    }
 }
