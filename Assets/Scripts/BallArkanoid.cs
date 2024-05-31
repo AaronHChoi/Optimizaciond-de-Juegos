@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallArkanoid : MonoBehaviour
+public class BallArkanoid : MonoBehaviour, IUpdatable
 {
     [SerializeField] private Vector2 initialVelocity;
 
@@ -15,13 +15,18 @@ public class BallArkanoid : MonoBehaviour
         ballRb = GetComponent<Rigidbody>();
         //playerController = GetComponent<PlayerController>();
         initialPosition = transform.position;
+        CustomUpdateManager.Instance.Register(this);
     }
-    private void Update()
+    public void OnUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !isBallMoving)
+        if (Input.GetKeyDown(KeyCode.Space) && !isBallMoving)
         {
             LaunchBall();
         }
+    }
+    private void OnDisable() // para desregistrar la pelota del custom update manager de hacer falta.
+    {
+        CustomUpdateManager.Instance.Unregister(this);
     }
     private void LaunchBall()
     {
@@ -94,7 +99,6 @@ public class BallArkanoid : MonoBehaviour
             GameManager.Instance.BlockDestroyed();
             Debug.Log(GameManager.Instance.blockLeft);
         }
-        
     }
     public void ResetBall()
     {

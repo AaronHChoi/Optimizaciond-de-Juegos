@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IUpdatable
 {
     [SerializeField] private float moveSpeed;
     private float bounds = 7f;
@@ -10,10 +10,15 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
+        CustomUpdateManager.Instance.Register(this);
     }
-    private void Update()
+    public void OnUpdate()
     {
         Move();
+    }
+    private void OnDisable() // para desregistrar el playercontroller del custom update manager de hacer falta.
+    {
+        CustomUpdateManager.Instance.Unregister(this);
     }
     private void Move()
     {

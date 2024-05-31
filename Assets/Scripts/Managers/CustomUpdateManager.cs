@@ -4,13 +4,34 @@ using UnityEngine;
 
 public class CustomUpdateManager : MonoBehaviour
 {
-    //[SerializeField] private BallArkanoid ballArkanoid;
-    //[SerializeField] private PlayerController playerController;
-    [SerializeField] private MultyBall multyBall;
+    public static CustomUpdateManager instance;
+    private List<IUpdatable> updatables = new List<IUpdatable>();
+
+    public static CustomUpdateManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                GameObject obj = new GameObject("UpdateManager");
+                instance = obj.AddComponent<CustomUpdateManager>();
+            }
+            return instance;
+        }
+    }
     private void Update()
     {
-        //ballArkanoid.CustomUpdate();
-        //playerController.CustomUpdate();
-        multyBall.CustomUpdate();
+        foreach(IUpdatable updatable in updatables)
+            updatable.OnUpdate();
+    }
+    public void Register(IUpdatable updatable)
+    {
+        if(!updatables.Contains(updatable))
+            updatables.Add(updatable);
+    }
+    public void Unregister(IUpdatable updatable)
+    {
+        if (updatables.Contains(updatable))
+            updatables.Remove(updatable);
     }
 }

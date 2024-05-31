@@ -21,7 +21,7 @@ public class MultyBall : MonoBehaviour
     // Update is called once per frame
     public void CustomUpdate()
     {
-        if (multyBallBrick.isDestroyed == true) 
+        if (multyBallBrick.isDestroyed == true)
         {
             LaunchMultyBallPowerUp();
         }
