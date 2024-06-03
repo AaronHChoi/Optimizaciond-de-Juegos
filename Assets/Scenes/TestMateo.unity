@@ -157,7 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5046720baf1b37040b1e03833244f10f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multyBall: {fileID: 1750423227}
 --- !u!4 &198547302
 Transform:
   m_ObjectHideFlags: 0
@@ -503,6 +502,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6968203945554875162, guid: d51f1c64cbda3254aa9a3b4054245acf, type: 3}
   m_PrefabInstance: {fileID: 911121995}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &743287268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6903224568288523666, guid: 604d53d614f8ad64ebc25863cee65569, type: 3}
+  m_PrefabInstance: {fileID: 8605920671771609605}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fa9fced14622b4aba2c6c1bf360091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &888051930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1051,6 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: {x: 4, y: 6}
+  playerController: {fileID: 0}
 --- !u!1 &1449894185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: {x: 4, y: 6}
+  playerController: {fileID: 0}
 --- !u!135 &1449894187
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1260,11 +1272,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6968203945554875162, guid: d51f1c64cbda3254aa9a3b4054245acf, type: 3}
   m_PrefabInstance: {fileID: 1244767570}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1626409881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626409882}
+  - component: {fileID: 1626409883}
+  m_Layer: 0
+  m_Name: BallSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1626409882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626409881}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1666663, z: 0}
+  m_LocalScale: {x: 2.0808036, y: 3.3333333, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 270713121}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1626409883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626409881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00275f618547b64d94f8f42f75dfacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballToLoad: 2
+  ballPrefab: {fileID: 1741836057}
+  spawnPoint: {fileID: 1626409882}
 --- !u!4 &1678677216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6968203945554875162, guid: d51f1c64cbda3254aa9a3b4054245acf, type: 3}
   m_PrefabInstance: {fileID: 1033658261}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1741836057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 26688911021544663, guid: 604d53d614f8ad64ebc25863cee65569, type: 3}
+  m_PrefabInstance: {fileID: 8605920671771609605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1741836060 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 319076422949687230, guid: 604d53d614f8ad64ebc25863cee65569, type: 3}
+  m_PrefabInstance: {fileID: 8605920671771609605}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741836057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7d98c6e325b3b49ae817cd621735b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1750423221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,7 +1370,7 @@ Transform:
   m_GameObject: {fileID: 1750423221}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.516, y: 3.02, z: 10.220001}
+  m_LocalPosition: {x: 0.35, y: 3.02, z: 10.220001}
   m_LocalScale: {x: 0.39097, y: 0.34718, z: 0.25545}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1310,7 +1385,7 @@ Rigidbody:
   m_GameObject: {fileID: 1750423221}
   serializedVersion: 4
   m_Mass: 0.5
-  m_Drag: 0
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1414,6 +1489,7 @@ MonoBehaviour:
   multyBallBrick: {fileID: 2787628528790355535}
   ball_1: {fileID: 1397478496}
   ball_2: {fileID: 1449894186}
+  ballSpawner: {fileID: 1626409883}
 --- !u!1001 &1808861477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1677,7 +1753,7 @@ Transform:
   m_GameObject: {fileID: 1392687258186602973}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.35, y: 0.64, z: 0}
+  m_LocalPosition: {x: 1.27, y: 0.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2013,6 +2089,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1659562559977003873, guid: 6cc47826f59fbf2418174ec1875c8c03, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1741836060}
+    - target: {fileID: 1659562559977003873, guid: 6cc47826f59fbf2418174ec1875c8c03, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 743287268}
     - target: {fileID: 2300600682495084738, guid: 6cc47826f59fbf2418174ec1875c8c03, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.216884
@@ -2250,6 +2334,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4973671247508475490, guid: 604d53d614f8ad64ebc25863cee65569, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1449894191}
+    - targetCorrespondingSourceObject: {fileID: 4973671247508475490, guid: 604d53d614f8ad64ebc25863cee65569, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1626409882}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 604d53d614f8ad64ebc25863cee65569, type: 3}
 --- !u!1001 &8822813701943095035
