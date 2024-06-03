@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class CustomUpdateManager : MonoBehaviour
 {
-    public static CustomUpdateManager instance;
+    public static CustomUpdateManager Instance;
     private List<IUpdatable> updatables = new List<IUpdatable>();
 
-    public static CustomUpdateManager Instance
+    private void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (instance == null)
-            {
-                GameObject obj = new GameObject("UpdateManager");
-                instance = obj.AddComponent<CustomUpdateManager>();
-            }
-            return instance;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
         }
     }
+
     private void Update()
     {
-        foreach(IUpdatable updatable in updatables)
+        foreach (IUpdatable updatable in updatables)
             updatable.OnUpdate();
     }
     public void Register(IUpdatable updatable)
     {
-        if(!updatables.Contains(updatable))
+        if (!updatables.Contains(updatable))
             updatables.Add(updatable);
     }
     public void Unregister(IUpdatable updatable)
