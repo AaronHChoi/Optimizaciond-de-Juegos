@@ -7,8 +7,9 @@ public class BrickManager : MonoBehaviour
     public ObjectPool objectPool;
     public int rows = 5;
     public int columns = 10;
-    public Vector2 startPosition;
+    public Vector3 startPosition;
     public Vector2 spacing;
+    [SerializeField] private Transform bricks;
 
     private void Start()
     {
@@ -37,7 +38,8 @@ public class BrickManager : MonoBehaviour
                 GameObject brick = objectPool.GetPooledObject("Block");
                 if (brick != null)
                 {
-                    brick.transform.position = new Vector2(startPosition.x + (col * spacing.x), startPosition.y - (row * spacing.y));
+                    brick.transform.position = new Vector3(startPosition.x + (col * spacing.x), startPosition.y - (row * spacing.y), startPosition.z);
+                    brick.transform.SetParent(bricks);
                     brick.SetActive(true);
                 }
                 else

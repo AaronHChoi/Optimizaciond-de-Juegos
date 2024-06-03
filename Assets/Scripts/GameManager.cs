@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int blockLeft;
-
     public HUD hud;
 
+    private int level;
     private int lives = 3;
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         blockLeft = GameObject.FindGameObjectsWithTag("Block").Length;
+        level = 1;
         Debug.Log(blockLeft);
     }
     public void BlockDestroyed()

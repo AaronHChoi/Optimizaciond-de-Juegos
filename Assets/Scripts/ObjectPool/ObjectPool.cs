@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviour
     public Dictionary<string, Queue<GameObject>> poolDictionary;
     private void Start()
     {
-        InitializePool();
+        //InitializePool();
     }
     public void InitializePool()
     {

@@ -97,8 +97,8 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
         if(brick != null && !brick.isDestroyed)
         {
             brick.isDestroyed = true;
-            //Destroy(collision.transform.parent.gameObject);
-            brickManager.ReturnBrick(gameObject);
+            Destroy(collision.transform.parent.gameObject);
+            //brickManager.ReturnBrick(gameObject);
             GameManager.Instance.BlockDestroyed();
             Debug.Log(GameManager.Instance.blockLeft);
         }
