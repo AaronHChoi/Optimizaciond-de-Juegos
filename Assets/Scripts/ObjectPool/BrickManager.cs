@@ -27,20 +27,25 @@ public class BrickManager : MonoBehaviour
             Debug.LogError("ObjectPool is not initialized.");
             return;
         }
-        CreateBricks();
+        //CreateBricks();
     }
-    void CreateBricks()
+    public void CreateBricks(int bricksToCreate)
     {
+        ClearBricks();
+        int createdBricks = 0;
         for (int row = 0; row < rows; row++)
         {
             for(int col = 0; col < columns; col++)
             {
+                if(createdBricks >= bricksToCreate) { return; }
+
                 GameObject brick = objectPool.GetPooledObject("Block");
                 if (brick != null)
                 {
                     brick.transform.position = new Vector3(startPosition.x + (col * spacing.x), startPosition.y - (row * spacing.y), startPosition.z);
                     brick.transform.SetParent(bricks);
                     brick.SetActive(true);
+                    createdBricks++;
                 }
                 else
                 {
@@ -48,6 +53,14 @@ public class BrickManager : MonoBehaviour
                 }
             }
         }
+    }
+    public void ClearBricks()
+    {
+        foreach (Transform brick in bricks)
+        {
+            brick.gameObject.SetActive(false);
+        }
+            
     }
     public void ReturnBrick(GameObject brick)
     {

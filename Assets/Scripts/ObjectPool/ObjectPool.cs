@@ -6,10 +6,7 @@ public class ObjectPool : MonoBehaviour
 {
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
-    private void Start()
-    {
-        //InitializePool();
-    }
+    [SerializeField] Brick brick;
     public void InitializePool()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
@@ -44,32 +41,6 @@ public class ObjectPool : MonoBehaviour
 
         poolDictionary[tag].Enqueue(obj);
         return obj;
-        //if (!poolDictionary.ContainsKey(tag))
-        //{
-        //    Debug.Log("Pool with tag" + tag + "doesnt exist");
-        //    return null;
-        //}
-
-        //GameObject obj = poolDictionary[tag].Dequeue();
-
-        //if (obj == null)
-        //{
-        //    Debug.LogWarning("Object with tag " + tag + " is null.");
-        //    return null;
-        //}
-
-        //poolDictionary[tag].Enqueue(obj);
-        //return obj;
-        //if(!obj.activeInHierarchy)
-        //{
-        //    poolDictionary[tag].Enqueue(obj);
-        //    return obj;
-        //}
-
-        //GameObject newObj = Instantiate(obj);
-        //newObj.SetActive(false);
-        //poolDictionary[tag].Enqueue(newObj);
-        //return newObj;
     }
     public void ReturnObjectToPool(GameObject obj, string tag)
     {

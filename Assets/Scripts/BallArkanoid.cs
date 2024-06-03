@@ -6,15 +6,15 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
 {
     [SerializeField] private Vector2 initialVelocity;
 
-    [SerializeField]PlayerController playerController;
+    [SerializeField] PlayerController playerController;
     private Rigidbody ballRb;
-    private BrickManager brickManager;
+    [SerializeField] private BrickManager brickManager;
     private bool isBallMoving;
     private Vector3 initialPosition;
     private void Start()
     {
         ballRb = GetComponent<Rigidbody>();
-        brickManager = GetComponent<BrickManager>();
+        //brickManager = GetComponent<BrickManager>();
         //playerController = GetComponent<PlayerController>();
         initialPosition = transform.position;
         CustomUpdateManager.Instance.Register(this);
@@ -97,10 +97,12 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
         if(brick != null && !brick.isDestroyed)
         {
             brick.isDestroyed = true;
-            Destroy(collision.transform.parent.gameObject);
-            //brickManager.ReturnBrick(gameObject);
+            //Destroy(collision.transform.parent.gameObject);
+            brickManager.ReturnBrick(brick.gameObject);
+            
             GameManager.Instance.BlockDestroyed();
             Debug.Log(GameManager.Instance.blockLeft);
+            brick.ResetBrick();
         }
     }
     public void ResetBall()
