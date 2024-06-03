@@ -5,8 +5,8 @@ using UnityEngine;
 public class BrickManager : MonoBehaviour
 {
     public ObjectPool objectPool;
-    public int rows = 5;
-    public int columns = 10;
+    public int rows = 3;
+    public int columns = 9;
     public Vector3 startPosition;
     public Vector2 spacing;
     [SerializeField] private Transform bricks;

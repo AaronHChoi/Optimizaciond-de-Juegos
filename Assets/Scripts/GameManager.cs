@@ -36,7 +36,8 @@ public class GameManager : MonoBehaviour
     }
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        level++;
+        hud.ChangeLevel("Level " + level);
     }
     public void ResetScene()
     {
