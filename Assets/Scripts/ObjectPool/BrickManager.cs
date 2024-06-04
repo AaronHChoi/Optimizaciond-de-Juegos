@@ -10,7 +10,6 @@ public class BrickManager : MonoBehaviour
     public Vector3 startPosition;
     public Vector2 spacing;
     [SerializeField] private Transform bricks;
-
     private void Start()
     {
         if (objectPool == null)
@@ -27,7 +26,6 @@ public class BrickManager : MonoBehaviour
             Debug.LogError("ObjectPool is not initialized.");
             return;
         }
-        //CreateBricks();
     }
     public void CreateBricks(int bricksToCreate)
     {
@@ -35,10 +33,9 @@ public class BrickManager : MonoBehaviour
         int createdBricks = 0;
         for (int row = 0; row < rows; row++)
         {
-            for(int col = 0; col < columns; col++)
+            for (int col = 0; col < columns; col++)
             {
-                if(createdBricks >= bricksToCreate) { return; }
-
+                if (createdBricks >= bricksToCreate) { return; }
                 GameObject brick = objectPool.GetPooledObject("Block");
                 if (brick != null)
                 {
@@ -60,12 +57,14 @@ public class BrickManager : MonoBehaviour
         {
             brick.gameObject.SetActive(false);
         }
-            
     }
     public void ReturnBrick(GameObject brick)
     {
         if (objectPool != null)
         {
+            Brick brickComponent = brick.GetComponent<Brick>();
+            if(brickComponent != null)
+                brickComponent.ResetBrick();
             objectPool.ReturnObjectToPool(brick, "Block");
         }
     }

@@ -26,10 +26,6 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
             LaunchBall();
         }
     }
-    private void OnDisable() // para desregistrar la pelota del custom update manager de hacer falta.
-    {
-        CustomUpdateManager.Instance.Unregister(this);
-    }
     private void LaunchBall()
     {
         transform.parent = null;
@@ -102,7 +98,7 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
             
             GameManager.Instance.BlockDestroyed();
             Debug.Log(GameManager.Instance.blockLeft);
-            brick.ResetBrick();
+            //brick.ResetBrick();
         }
     }
     public void ResetBall()

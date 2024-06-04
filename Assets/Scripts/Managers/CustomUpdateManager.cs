@@ -19,7 +19,6 @@ public class CustomUpdateManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void Update()
     {
         foreach (IUpdatable updatable in updatables)

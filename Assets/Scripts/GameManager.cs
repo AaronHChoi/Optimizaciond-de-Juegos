@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
 {
     public int blockLeft;
     public HUD hud;
-    public BrickManager brickManager;
+
+    [SerializeField] BrickManager brickManager;
+    [SerializeField] PlayerController playerController;
+    [SerializeField] BallArkanoid ball;
 
     private int level;
     private int lives = 3;
@@ -27,7 +30,7 @@ public class GameManager : MonoBehaviour
         blockLeft = GameObject.FindGameObjectsWithTag("Block").Length;
         level = 1;
         Debug.Log(blockLeft);
-        LoadLevel(level);
+        StartCoroutine(LoadLevelCoroutine(level));
     }
     public void BlockDestroyed()
     {
@@ -40,7 +43,9 @@ public class GameManager : MonoBehaviour
     private void LoadNextLevel()
     {
         level++;
-        LoadLevel(level);
+        StartCoroutine(LoadLevelCoroutine(level));
+        playerController.ResetPosition();
+        ball.ResetBall();
         hud.ChangeLevel("Level " + level);
     }
     public void ResetScene()
@@ -53,14 +58,15 @@ public class GameManager : MonoBehaviour
         lives--;
         hud.DeactivateLife(lives);
     }
-    private void LoadLevel(int level)
+    private IEnumerator LoadLevelCoroutine(int level)
     {
+        yield return null;
         if(brickManager != null)
         {
-            int bricksToCreate = level;
-            bricksToCreate *= 9;
+            int bricksToCreate = level * 9;
             brickManager.CreateBricks(bricksToCreate);
-            blockLeft = bricksToCreate; 
+            
+            blockLeft = bricksToCreate;
         }
     }
 }

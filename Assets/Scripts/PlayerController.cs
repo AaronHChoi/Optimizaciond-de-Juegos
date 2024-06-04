@@ -16,10 +16,6 @@ public class PlayerController : MonoBehaviour, IUpdatable
     {
         Move();
     }
-    private void OnDisable() // para desregistrar el playercontroller del custom update manager de hacer falta.
-    {
-        CustomUpdateManager.Instance.Unregister(this);
-    }
     private void Move()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
