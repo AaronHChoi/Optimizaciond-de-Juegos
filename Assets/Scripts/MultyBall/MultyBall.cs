@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
 
-public class MultyBall : MonoBehaviour
+public class MultyBall : MonoBehaviour, IUpdatable
 {
     [SerializeField] Brick multyBallBrick;
-    [SerializeField] BallArkanoid ball_1;
-    [SerializeField] BallArkanoid ball_2;
+    [SerializeField] BallSpawner ballSpawner;
 
     private Rigidbody multyballRb;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(true);
         multyballRb = GetComponent<Rigidbody>();
+        CustomUpdateManager.Instance.Register(this);
     }
 
     // Update is called once per frame
-    public void CustomUpdate()
+    public void OnUpdate()
     {
         if (multyBallBrick.isDestroyed == true)
         {
@@ -37,9 +38,8 @@ public class MultyBall : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             //logica de spawn dos bolas mas 
+            ballSpawner.SpawnBall(2);
             gameObject.SetActive(false);
-            ball_1.gameObject.SetActive(true);
-            ball_2.gameObject.SetActive(true);
         }
     }
 }
