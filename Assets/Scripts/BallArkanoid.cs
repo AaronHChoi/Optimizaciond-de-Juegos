@@ -45,19 +45,15 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
                 switch (hitSide)
                 {
                     case "Right":
-                        Debug.Log("Hit the right side of the brick");
                         UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
                         break;
                     case "Left":
-                        Debug.Log("Hit the left side of the brick");
                         UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
                         break;
                     case "Top":
-                        Debug.Log("Hit the top side of the brick");
                         UpdateVelocity(new Vector2(initialVelocity.x, 6));
                         break;
                     case "Bottom":
-                        Debug.Log("Hit the bottom side of the brick");
                         UpdateVelocity(new Vector2(initialVelocity.x, -6));
                         break;
                 }
@@ -80,7 +76,7 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
                 break;
 
             case "Player":
-                UpdateVelocity(new Vector2(0, 6));
+                UpdateVelocity(GetRandomVelocity(new Vector2(0, 6)));
                 break;
 
             case "PlayerLeft":
@@ -107,7 +103,6 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     private Vector2 GetRandomVelocity(Vector2 baseVelocity)
     {
         float variationX = Random.Range(-2f, 2f);
-        float variationY = Random.Range(0.1f, 0.5f);
-        return new Vector2(baseVelocity.x + variationX, baseVelocity.y + variationY);
+        return new Vector2(baseVelocity.x + variationX, baseVelocity.y);
     }
 }

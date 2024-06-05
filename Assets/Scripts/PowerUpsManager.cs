@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpsManager : MonoBehaviour
 {
-    public int targetBlocksForPowerUp;
+    public int targetBlocksForPowerUp = 75;
     public int blocksBrocken;
     [SerializeField] private float currentChance = 0;
 
@@ -19,11 +19,11 @@ public class PowerUpsManager : MonoBehaviour
 
         UpdateChance();
 
-        //if (ShouldGeneratePowerUp())
-        //{
-        //    GeneratePowerUp();
-        //    ResetPowerUpChance();
-        //}
+        if (ShouldGeneratePowerUp())
+        {
+            GeneratePowerUp();
+            ResetPowerUpChance();
+        }
     }
     private void UpdateChance()
     {
