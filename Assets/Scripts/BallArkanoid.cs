@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallArkanoid : MonoBehaviour, IUpdatable
 {
-    [SerializeField] private Vector2 initialVelocity;
+    public Vector2 initialVelocity;
 
     [SerializeField] PlayerController playerController;
     private Rigidbody ballRb;
@@ -14,8 +14,6 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     private void Start()
     {
         ballRb = GetComponent<Rigidbody>();
-        //brickManager = GetComponent<BrickManager>();
-        //playerController = GetComponent<PlayerController>();
         initialPosition = transform.position;
         CustomUpdateManager.Instance.Register(this);
     }
@@ -38,25 +36,25 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
 
         switch (collision.gameObject.tag)
         {
-            case "BlockTop":
-                UpdateVelocity(new Vector2(initialVelocity.x, 6));
-                DestroyBlock(brick, collision);
-                break;
+            //case "BlockTop":
+            //    UpdateVelocity(new Vector2(initialVelocity.x, 6));
+            //    DestroyBlock(brick, collision);
+            //    break;
 
-            case "BlockBottom":
-                UpdateVelocity(new Vector2(initialVelocity.x, -6));
-                DestroyBlock(brick, collision);
-                break;
+            //case "BlockBottom":
+            //    UpdateVelocity(new Vector2(initialVelocity.x, -6));
+            //    DestroyBlock(brick, collision);
+            //    break;
 
-            case "BlockRight":
-                UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
-                DestroyBlock(brick, collision);
-                break;
+            //case "BlockRight":
+            //    UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
+            //    DestroyBlock(brick, collision);
+            //    break;
 
-            case "BlockLeft":
-                UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
-                DestroyBlock(brick, collision);
-                break;
+            //case "BlockLeft":
+            //    UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
+            //    DestroyBlock(brick, collision);
+            //    break;
 
             case "Top":
                 UpdateVelocity(new Vector2(initialVelocity.x, -6));
@@ -83,24 +81,22 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
                 break;
         }
     }
-    private void UpdateVelocity(Vector2 newVelocity)
+    public void UpdateVelocity(Vector2 newVelocity)
     {
         initialVelocity = newVelocity;
         ballRb.velocity = initialVelocity;
     }
-    private void DestroyBlock(Brick brick, Collision collision)
-    {
-        if(brick != null && !brick.isDestroyed)
-        {
-            brick.isDestroyed = true;
-            //Destroy(collision.transform.parent.gameObject);
-            brickManager.ReturnBrick(brick.gameObject);
+    //private void DestroyBlock(Brick brick, Collision collision)
+    //{
+    //    if(brick != null && !brick.isDestroyed)
+    //    {
+    //        brick.isDestroyed = true;
+    //        brickManager.ReturnBrick(brick.gameObject);
             
-            GameManager.Instance.BlockDestroyed();
-            Debug.Log(GameManager.Instance.blockLeft);
-            //brick.ResetBrick();
-        }
-    }
+    //        GameManager.Instance.BlockDestroyed();
+    //        Debug.Log(GameManager.Instance.blockLeft);
+    //    }
+    //}
     public void ResetBall()
     {
         ballRb.velocity = Vector3.zero;
