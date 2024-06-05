@@ -8,7 +8,7 @@ public class Brick : MonoBehaviour
     private BrickManager brickManager;
     private void Start()
     {
-        brickManager = GetComponent<BrickManager>();
+        brickManager = GetComponentInParent<BrickManager>();
     }
     public void ResetBrick()
     {
@@ -19,7 +19,7 @@ public class Brick : MonoBehaviour
         if (!isDestroyed)
         {
             isDestroyed = true;
-            brickManager.ReturnBrick(gameObject);
+            brickManager.ReturnBrick(this.gameObject);
             GameManager.Instance.BlockDestroyed();
             Debug.Log(GameManager.Instance.blockLeft);
         }
