@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] BallArkanoid ball;
 
-    private int level;
+    [SerializeField] private int level;
     private int lives = 3;
     private string win = "Win";
     private string lose = "Lose";
@@ -39,21 +39,26 @@ public class GameManager : MonoBehaviour
         blockLeft--;
         if(blockLeft <= 0)
         {
-            LoadNextLevel();
+            if(level <= 2)
+            {
+                Debug.Log("2");
+                LoadNextLevel();
+            }
+            else
+            {
+                Debug.Log("3");
+                EndGame(win);
+            }
+                
         }
     }
     private void LoadNextLevel()
     {
-        if(level <= 2)
-        {
-            level++;
-            StartCoroutine(LoadLevelCoroutine(level));
-            playerController.ResetPosition();
-            ball.ResetBall();
-            hud.ChangeLevel("Level " + level);
-        } else
-            EndGame(win);
-       
+        level++;
+        StartCoroutine(LoadLevelCoroutine(level));
+        playerController.ResetPosition();
+        ball.ResetBall();
+        hud.ChangeLevel("Level " + level);
     }
     public void ResetScene()
     {
@@ -68,6 +73,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadLevelCoroutine(int level)
     {
         yield return null;
+        //yield return new WaitForSeconds(1f);
         if(brickManager != null)
         {
             int bricksToCreate = level * 9;
@@ -76,7 +82,7 @@ public class GameManager : MonoBehaviour
             blockLeft = bricksToCreate;
         }
     }
-    public void EndGame(string result)
+    private void EndGame(string result)
     {
         hud.endScreen.SetActive(true);
         hud.ChangeResult(result);

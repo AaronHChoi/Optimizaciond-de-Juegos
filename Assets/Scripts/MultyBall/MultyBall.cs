@@ -10,8 +10,6 @@ public class MultyBall : MonoBehaviour, IUpdatable
 
     private Rigidbody multyballRb;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(true);
@@ -19,7 +17,6 @@ public class MultyBall : MonoBehaviour, IUpdatable
         CustomUpdateManager.Instance.Register(this);
     }
 
-    // Update is called once per frame
     public void OnUpdate()
     {
         if (multyBallBrick.isDestroyed == true)

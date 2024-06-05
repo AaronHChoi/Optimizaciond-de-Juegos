@@ -8,16 +8,9 @@ public class BallSpawner : MonoBehaviour
     [SerializeField] private int ballToLoad;
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] private Transform spawnPoint;
-    // Start is called before the first frame update
     void Start()
     {
         LoadBalls();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SpawnBall(int ballsToInstanciate)

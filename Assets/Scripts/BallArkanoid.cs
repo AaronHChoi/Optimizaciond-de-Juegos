@@ -6,14 +6,14 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
 {
     public Vector2 initialVelocity;
 
-    [SerializeField] PlayerController playerController;
-    private Rigidbody ballRb;
-    [SerializeField] private BrickManager brickManager;
+    PlayerController playerController;
+    Rigidbody ballRb;
     private bool isBallMoving;
     private Vector3 initialPosition;
 
     private void Start()
     {
+        playerController = GetComponentInParent<PlayerController>();
         ballRb = GetComponent<Rigidbody>();
         initialPosition = transform.position;
         CustomUpdateManager.Instance.Register(this);
@@ -84,11 +84,11 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
                 break;
 
             case "PlayerLeft":
-                UpdateVelocity(new Vector2(-4, 6));
+                UpdateVelocity(GetRandomVelocity(new Vector2(-4, 6)));
                 break;
 
             case "PlayerRight":
-                UpdateVelocity(new Vector2(4, 6));
+                UpdateVelocity(GetRandomVelocity(new Vector2(4, 6)));
                 break;
         }
     }
@@ -103,5 +103,11 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
         transform.position = initialPosition;
         transform.parent = playerController.transform;
         isBallMoving = false;
+    }
+    private Vector2 GetRandomVelocity(Vector2 baseVelocity)
+    {
+        float variationX = Random.Range(-2f, 2f);
+        float variationY = Random.Range(0.1f, 0.5f);
+        return new Vector2(baseVelocity.x + variationX, baseVelocity.y + variationY);
     }
 }
