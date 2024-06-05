@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class BallArkanoid : MonoBehaviour, IUpdatable
 {
-    [SerializeField] private Vector2 initialVelocity;
+    public Vector2 initialVelocity;
 
     [SerializeField] PlayerController playerController;
     private Rigidbody ballRb;
     [SerializeField] private BrickManager brickManager;
     private bool isBallMoving;
     private Vector3 initialPosition;
+
     private void Start()
     {
         ballRb = GetComponent<Rigidbody>();
-        //brickManager = GetComponent<BrickManager>();
-        //playerController = GetComponent<PlayerController>();
         initialPosition = transform.position;
         CustomUpdateManager.Instance.Register(this);
     }
@@ -34,30 +33,40 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Brick brick = collision.transform.parent?.GetComponent<Brick>();
-
+        Brick brick = collision.transform.GetComponent<Brick>();
+        if (brick != null && !brick.isDestroyed)
+        {
+            SideDetection sideDetection = brick.GetComponent<SideDetection>();
+            if(sideDetection != null )
+            {
+                Vector3 hitPoint = collision.GetContact(0).point;
+                string hitSide = sideDetection.GetHitSide(hitPoint);
+                Debug.Log(hitSide);
+                switch (hitSide)
+                {
+                    case "Right":
+                        Debug.Log("Hit the right side of the brick");
+                        UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
+                        break;
+                    case "Left":
+                        Debug.Log("Hit the left side of the brick");
+                        UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
+                        break;
+                    case "Top":
+                        Debug.Log("Hit the top side of the brick");
+                        UpdateVelocity(new Vector2(initialVelocity.x, 6));
+                        break;
+                    case "Bottom":
+                        Debug.Log("Hit the bottom side of the brick");
+                        UpdateVelocity(new Vector2(initialVelocity.x, -6));
+                        break;
+                }
+                brick.DestroyBlock();
+            }
+            
+        }
         switch (collision.gameObject.tag)
         {
-            case "BlockTop":
-                UpdateVelocity(new Vector2(initialVelocity.x, 6));
-                DestroyBlock(brick, collision);
-                break;
-
-            case "BlockBottom":
-                UpdateVelocity(new Vector2(initialVelocity.x, -6));
-                DestroyBlock(brick, collision);
-                break;
-
-            case "BlockRight":
-                UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
-                DestroyBlock(brick, collision);
-                break;
-
-            case "BlockLeft":
-                UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
-                DestroyBlock(brick, collision);
-                break;
-
             case "Top":
                 UpdateVelocity(new Vector2(initialVelocity.x, -6));
                 break;
@@ -83,23 +92,10 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
                 break;
         }
     }
-    private void UpdateVelocity(Vector2 newVelocity)
+    public void UpdateVelocity(Vector2 newVelocity)
     {
         initialVelocity = newVelocity;
         ballRb.velocity = initialVelocity;
-    }
-    private void DestroyBlock(Brick brick, Collision collision)
-    {
-        if(brick != null && !brick.isDestroyed)
-        {
-            brick.isDestroyed = true;
-            //Destroy(collision.transform.parent.gameObject);
-            brickManager.ReturnBrick(brick.gameObject);
-            
-            GameManager.Instance.BlockDestroyed();
-            Debug.Log(GameManager.Instance.blockLeft);
-            //brick.ResetBrick();
-        }
     }
     public void ResetBall()
     {

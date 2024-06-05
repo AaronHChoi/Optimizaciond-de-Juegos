@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     private int level;
     private int lives = 3;
+    private string win = "Win";
+    private string lose = "Lose";
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -42,16 +44,21 @@ public class GameManager : MonoBehaviour
     }
     private void LoadNextLevel()
     {
-        level++;
-        StartCoroutine(LoadLevelCoroutine(level));
-        playerController.ResetPosition();
-        ball.ResetBall();
-        hud.ChangeLevel("Level " + level);
+        if(level <= 2)
+        {
+            level++;
+            StartCoroutine(LoadLevelCoroutine(level));
+            playerController.ResetPosition();
+            ball.ResetBall();
+            hud.ChangeLevel("Level " + level);
+        } else
+            EndGame(win);
+       
     }
     public void ResetScene()
     {
         if(lives <= 0)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            EndGame(lose);
     }
     public void LoseLife()
     {
@@ -68,5 +75,10 @@ public class GameManager : MonoBehaviour
             
             blockLeft = bricksToCreate;
         }
+    }
+    public void EndGame(string result)
+    {
+        hud.endScreen.SetActive(true);
+        hud.ChangeResult(result);
     }
 }
