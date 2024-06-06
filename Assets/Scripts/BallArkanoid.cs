@@ -8,12 +8,14 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
 
     PlayerController playerController;
     Rigidbody ballRb;
+    BallManager ballManager;
     private bool isBallMoving;
     private Vector3 initialPosition;
 
     private void Start()
     {
         playerController = GetComponentInParent<PlayerController>();
+        ballManager = GetComponentInParent<BallManager>();
         ballRb = GetComponent<Rigidbody>();
         initialPosition = transform.position;
         CustomUpdateManager.Instance.Register(this);
@@ -41,7 +43,7 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
             {
                 Vector3 hitPoint = collision.GetContact(0).point;
                 string hitSide = sideDetection.GetHitSide(hitPoint);
-                Debug.Log(hitSide);
+                //Debug.Log(hitSide);
                 switch (hitSide)
                 {
                     case "Right":
@@ -59,7 +61,6 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
                 }
                 brick.DestroyBlock();
             }
-            
         }
         switch (collision.gameObject.tag)
         {
@@ -104,5 +105,9 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     {
         float variationX = Random.Range(-2f, 2f);
         return new Vector2(baseVelocity.x + variationX, baseVelocity.y);
+    }
+    public void DestroyBall()
+    {
+        ballManager.ReturnBall(this.gameObject);
     }
 }

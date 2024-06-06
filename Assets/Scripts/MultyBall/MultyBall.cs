@@ -7,7 +7,8 @@ public class MultyBall : MonoBehaviour, IUpdatable
 {
     [SerializeField] Brick multyBallBrick;
     [SerializeField] BallSpawner ballSpawner;
-
+    [SerializeField] BallManager ballManager;
+    
     private Rigidbody multyballRb;
     
     void Start()
@@ -16,26 +17,24 @@ public class MultyBall : MonoBehaviour, IUpdatable
         multyballRb = GetComponent<Rigidbody>();
         CustomUpdateManager.Instance.Register(this);
     }
-
     public void OnUpdate()
     {
-        if (multyBallBrick.isDestroyed == true)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             LaunchMultyBallPowerUp();
         }
     }
-
     public void LaunchMultyBallPowerUp()
     {
         multyballRb.useGravity = true;
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            //logica de spawn dos bolas mas 
-            ballSpawner.SpawnBall(2);
+            //logica de spawn dos bolas mas
+            //ballSpawner.SpawnBall(2);
+            ballManager.CreateBalls(2);
             gameObject.SetActive(false);
         }
     }

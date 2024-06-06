@@ -8,9 +8,14 @@ public class LoseTrigger : MonoBehaviour
     [SerializeField] BallArkanoid ball;
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.Instance.LoseLife();
-        playerController.ResetPosition();
-        ball.ResetBall();
-        GameManager.Instance.ResetScene();
+        BallArkanoid ballComponent = other.GetComponent<BallArkanoid>();
+        ballComponent.DestroyBall();
+        if (GameManager.Instance.ballsInGame <= 0)
+        {
+            GameManager.Instance.LoseLife();
+            playerController.ResetPosition();
+            ball.ResetBall();
+            GameManager.Instance.ResetScene();
+        }
     }
 }

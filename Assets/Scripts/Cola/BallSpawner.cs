@@ -23,7 +23,8 @@ public class BallSpawner : MonoBehaviour
                 //GameObject ballToSpawn = Instantiate((GameObject)ballQueue.Primero(), spawnPoint.position, spawnPoint.rotation);
                 GameObject ballToSpawn = Instantiate((GameObject)ballQueue.Primero(), spawnPoint.position, RandomRotation);
                 ballQueue.Desacolar(ballToSpawn);
-            }
+                GameManager.Instance.ballsInGame++;
+            } 
             
         }
     }

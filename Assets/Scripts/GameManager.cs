@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
 {
     public int blockLeft;
     public HUD hud;
+    public int ballsInGame = 1;
 
     [SerializeField] BrickManager brickManager;
     [SerializeField] PlayerController playerController;
     [SerializeField] BallArkanoid ball;
+    [SerializeField] BallManager ballManager;
 
     [SerializeField] private int level;
     private int lives = 3;
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("2");
                 LoadNextLevel();
             }
-            else
+            else // NO FUNCIONA
             {
                 Debug.Log("3");
                 EndGame(win);
@@ -73,13 +75,13 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadLevelCoroutine(int level)
     {
         yield return null;
-        //yield return new WaitForSeconds(1f);
         if(brickManager != null)
         {
             int bricksToCreate = level * 9;
             brickManager.CreateBricks(bricksToCreate);
             
             blockLeft = bricksToCreate;
+            ballManager.CreateBalls(1);
         }
     }
     private void EndGame(string result)
