@@ -16,6 +16,7 @@ TagManager:
   - BlockLeft
   - CustomBrick
   - Ball
+  - MultyBall
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - UI
   - Player
   - Ball
-  - 
-  - 
+  - Powers
+  - Bricks
   - 
   - 
   - 
