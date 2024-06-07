@@ -10,14 +10,15 @@ public class GameManager : MonoBehaviour
 {
     public int blockLeft;
     public HUD hud;
-    public int ballsInGame = 1;
+    public int ballsInGame;
 
     [SerializeField] BrickManager brickManager;
     [SerializeField] PlayerController playerController;
-    [SerializeField] BallArkanoid ball;
     [SerializeField] BallManager ballManager;
 
     [SerializeField] private int level;
+    private int bricksToCreate;
+    private int bricks = 9;
     private int lives = 3;
     private string win = "Win";
     private string lose = "Lose";
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        ballsInGame = 0;
         blockLeft = GameObject.FindGameObjectsWithTag("Block").Length;
         level = 1;
         Debug.Log(blockLeft);
@@ -41,25 +43,29 @@ public class GameManager : MonoBehaviour
         blockLeft--;
         if(blockLeft <= 0)
         {
-            if(level <= 2)
-            {
-                Debug.Log("2");
+            level++;
+            if (level <= 2)
                 LoadNextLevel();
-            }
-            else // NO FUNCIONA
-            {
-                Debug.Log("3");
+            else
                 EndGame(win);
-            }
-                
         }
     }
     private void LoadNextLevel()
     {
-        level++;
-        StartCoroutine(LoadLevelCoroutine(level));
+        ballManager.ClearBalls();
+
+        bricksToCreate = level * bricks;
+        brickManager.CreateBricks(bricksToCreate);
+
+        blockLeft = bricksToCreate;
+        ballManager.CreateBalls(1);
+        
         playerController.ResetPosition();
-        ball.ResetBall();
+
+        BallArkanoid ball = FindObjectOfType<BallArkanoid>();
+        if (ball != null)
+            ball.ResetBall();
+
         hud.ChangeLevel("Level " + level);
     }
     public void ResetScene()
@@ -77,7 +83,7 @@ public class GameManager : MonoBehaviour
         yield return null;
         if(brickManager != null)
         {
-            int bricksToCreate = level * 9;
+            bricksToCreate = level * bricks;
             brickManager.CreateBricks(bricksToCreate);
             
             blockLeft = bricksToCreate;

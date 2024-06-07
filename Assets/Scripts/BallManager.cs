@@ -43,6 +43,7 @@ public class BallManager : MonoBehaviour
                     ball.transform.position = new Vector3(startPosition.x, startPosition.y, startPosition.z);
                     ball.transform.SetParent(balls);
                     ball.SetActive(true);
+                    GameManager.Instance.ballsInGame++;
                 }
                 createdBalls++;
             }
@@ -55,7 +56,8 @@ public class BallManager : MonoBehaviour
     }
     public void ClearBalls()
     {
-        foreach (Transform ball in balls)
+        BallArkanoid[] activeBalls = FindObjectsOfType<BallArkanoid>();
+        foreach (BallArkanoid ball in activeBalls)
         {
             ball.gameObject.SetActive(false);
         }

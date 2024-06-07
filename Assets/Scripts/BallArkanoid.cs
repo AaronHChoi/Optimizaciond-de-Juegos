@@ -96,6 +96,7 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     }
     public void ResetBall()
     {
+        //ballManager.CreateBalls(1);
         ballRb.velocity = Vector3.zero;
         transform.position = initialPosition;
         transform.parent = playerController.transform;
