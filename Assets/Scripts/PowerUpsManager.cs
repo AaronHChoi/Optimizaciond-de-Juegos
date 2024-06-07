@@ -7,13 +7,14 @@ public class PowerUpsManager : MonoBehaviour
     public int targetBlocksForPowerUp = 75;
     public int blocksBrocken;
     [SerializeField] private float currentChance = 0;
-
+    MultyBallManager multyBallManager;
     private void Start()
     {
         currentChance = 100f / (targetBlocksForPowerUp / 2f);
+        multyBallManager = FindObjectOfType<MultyBallManager>();
         Debug.Log("PowerUpsManager" + blocksBrocken);
     }
-    public void BlockDestroyed()
+    public void BlockDestroyed(Vector3 lastPosition)
     {
         blocksBrocken++;
 
@@ -21,7 +22,7 @@ public class PowerUpsManager : MonoBehaviour
 
         if (ShouldGeneratePowerUp())
         {
-            GeneratePowerUp();
+            GeneratePowerUp(lastPosition);
             ResetPowerUpChance();
         }
     }
@@ -44,11 +45,20 @@ public class PowerUpsManager : MonoBehaviour
         return randomValue <= currentChance;
     }
 
-    private void GeneratePowerUp()
+    private void GeneratePowerUp(Vector3 lastPosition)
     {
-        // Lógica para generar el power-up
-        Debug.Log("Power-up generated!");
-        // Aquí podrías instanciar un prefab de power-up o realizar alguna otra acción
+        if(multyBallManager != null)
+        {
+
+            multyBallManager.CreateObjects(lastPosition);
+            // Lógica para generar el power-up
+            Debug.Log("Power-up generated!");
+            // Aquí podrías instanciar un prefab de power-up o realizar alguna otra acción
+        }
+        else
+        {
+            Debug.LogWarning("multyBallManager is not initialized. Cannot generate power-up.");
+        }
     }
 
     private void ResetPowerUpChance()

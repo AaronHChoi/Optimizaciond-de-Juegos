@@ -69,6 +69,10 @@ PrefabInstance:
       value: Prefab_Cube
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bc8f887022f04ee4b8e9c26a274db0a2, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc8f887022f04ee4b8e9c26a274db0a2, type: 3}
       propertyPath: m_TagString
       value: Block
       objectReference: {fileID: 0}
@@ -125,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyed: 0
+  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1926004175058258030
 MonoBehaviour:
   m_ObjectHideFlags: 0

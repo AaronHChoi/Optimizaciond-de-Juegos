@@ -5,12 +5,13 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     public bool isDestroyed = false;
+    public Vector3 lastPosition;
     private BrickManager brickManager;
     private PowerUpsManager powerUpManager;
     private void Start()
     {
         brickManager = GetComponentInParent<BrickManager>();
-        powerUpManager = GetComponentInParent<PowerUpsManager>();
+        powerUpManager = FindObjectOfType<PowerUpsManager>();
     }
     public void ResetBrick()
     {
@@ -21,9 +22,10 @@ public class Brick : MonoBehaviour
         if (!isDestroyed)
         {
             isDestroyed = true;
+            lastPosition = transform.position;
             brickManager.ReturnBrick(this.gameObject);
             GameManager.Instance.BlockDestroyed();
-            powerUpManager.BlockDestroyed();
+            powerUpManager.BlockDestroyed(lastPosition);
             Debug.Log(GameManager.Instance.blockLeft);
         }
     }

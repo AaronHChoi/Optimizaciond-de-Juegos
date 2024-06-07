@@ -43,6 +43,7 @@ public class BallManager : MonoBehaviour
                     ball.transform.position = new Vector3(startPosition.x, startPosition.y, startPosition.z);
                     ball.transform.SetParent(balls);
                     ball.SetActive(true);
+                    
                     GameManager.Instance.ballsInGame++;
                 }
                 createdBalls++;

@@ -3,29 +3,16 @@ using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
 
-public class MultyBall : MonoBehaviour, IUpdatable
+public class MultyBall : MonoBehaviour
 {
-    [SerializeField] Brick multyBallBrick;
-    [SerializeField] BallSpawner ballSpawner;
-    [SerializeField] BallManager ballManager;
-    
-    private Rigidbody multyballRb;
+    BallManager ballManager;
+    Rigidbody multyballRb;
     
     void Start()
     {
         gameObject.SetActive(true);
+        ballManager = FindObjectOfType<BallManager>();
         multyballRb = GetComponent<Rigidbody>();
-        CustomUpdateManager.Instance.Register(this);
-    }
-    public void OnUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            LaunchMultyBallPowerUp();
-        }
-    }
-    public void LaunchMultyBallPowerUp()
-    {
         multyballRb.useGravity = true;
     }
     private void OnCollisionEnter(Collision collision)
