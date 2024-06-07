@@ -1246,6 +1246,7 @@ MonoBehaviour:
   objectPool: {fileID: 1274737169}
   startPosition: {x: -0.02, y: -6.904, z: 9.78}
   spacing: {x: 0, y: 0}
+  createdBalls: 0
   balls: {fileID: 944040381}
   player: {fileID: 3632250839498900583}
 --- !u!4 &947206022 stripped
@@ -2962,7 +2963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7002720235391666421, guid: 52a534c119c755040be2e9e99c128d18, type: 3}
       propertyPath: pools.Array.data[1].size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7002720235391666421, guid: 52a534c119c755040be2e9e99c128d18, type: 3}
       propertyPath: pools.Array.data[0].prefab

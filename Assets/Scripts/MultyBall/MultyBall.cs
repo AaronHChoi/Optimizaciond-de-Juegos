@@ -30,10 +30,8 @@ public class MultyBall : MonoBehaviour, IUpdatable
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "PlayerLeft" || collision.gameObject.tag == "PlayerRight")
         {
-            //logica de spawn dos bolas mas
-            //ballSpawner.SpawnBall(2);
             ballManager.CreateBalls(2);
             gameObject.SetActive(false);
         }

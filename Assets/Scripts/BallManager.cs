@@ -7,6 +7,7 @@ public class BallManager : MonoBehaviour
     public ObjectPool objectPool;
     public Vector3 startPosition;
     public Vector2 spacing;
+    [SerializeField] int createdBalls = 0;
     [SerializeField] private Transform balls;
     [SerializeField] private Transform player;
     private void Start()
@@ -28,24 +29,29 @@ public class BallManager : MonoBehaviour
     }
     public void CreateBalls(int ballsToCreate)
     {
-        ClearBalls();
-        int createdBalls = 0;
-        if (createdBalls >= ballsToCreate) { return; }
-        GameObject ball = objectPool.GetPooledObject("Ball");
-        if (ball != null)
+        //ClearBalls();
+        //int ballsNeeded = ballsToCreate - createdBalls;
+        //if (createdBalls >= ballsToCreate) { return; }
+        int initialCreatedBalls = createdBalls;
+        for (int i = 0; i < ballsToCreate; i++)
         {
-            ball.transform.position = new Vector3(startPosition.x, startPosition.y, startPosition.z);
-            //transform.SetParent(player);
-            
-            ball.transform.SetParent(balls);
-            
-            ball.SetActive(true);
-            createdBalls++;
+            GameObject ball = objectPool.GetPooledObject("Ball");
+            if (ball != null)
+            {
+                if(ball.gameObject.activeInHierarchy == false)
+                {
+                    ball.transform.position = new Vector3(startPosition.x, startPosition.y, startPosition.z);
+                    ball.transform.SetParent(balls);
+                    ball.SetActive(true);
+                }
+                createdBalls++;
+            }
+            else
+            {
+                Debug.LogError("Failed to get pooled object for Brick.");
+            }
         }
-        else
-        {
-            Debug.LogError("Failed to get pooled object for Brick.");
-        }
+        createdBalls = initialCreatedBalls + ballsToCreate;
     }
     public void ClearBalls()
     {
@@ -53,14 +59,12 @@ public class BallManager : MonoBehaviour
         {
             ball.gameObject.SetActive(false);
         }
+        createdBalls = 0;
     }
     public void ReturnBall(GameObject ball)
     {
         if (objectPool != null)
         {
-            //BallArkanoid ballComponent = ball.GetComponent<BallArkanoid>();
-            //if (ballComponent != null)
-            //    ballComponent.ResetBall();
             objectPool.ReturnObjectToPool(ball, "Ball");
         }
     }

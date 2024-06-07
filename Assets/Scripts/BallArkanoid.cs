@@ -30,7 +30,7 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     private void LaunchBall()
     {
         transform.parent = null;
-        ballRb.velocity = initialVelocity;
+        ballRb.velocity = GetRandomVelocity(new Vector2(0, 6));
         isBallMoving = true;
     }
     private void OnCollisionEnter(Collision collision)
