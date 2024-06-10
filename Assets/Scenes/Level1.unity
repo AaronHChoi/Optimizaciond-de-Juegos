@@ -2208,6 +2208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MultyBall
       objectReference: {fileID: 0}
+    - target: {fileID: 8451806453311986699, guid: db1ee7d3a6d0f3041a59ecef6f07ebe8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
