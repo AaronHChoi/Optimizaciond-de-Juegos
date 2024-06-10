@@ -15,7 +15,7 @@ GameObject:
   m_TagString: BlockTop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &5501921016057088247
 Transform:
@@ -68,7 +68,7 @@ GameObject:
   m_TagString: BlockLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &3095254456356818494
 Transform:
@@ -121,7 +121,7 @@ GameObject:
   m_TagString: BlockBottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &6411146355414129675
 Transform:
@@ -178,7 +178,7 @@ GameObject:
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6968203945554875162
 Transform:
@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyed: 0
+  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!33 &5486322417425732854
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -310,7 +311,7 @@ GameObject:
   m_TagString: BlockRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &4810078887803271445
 Transform:
