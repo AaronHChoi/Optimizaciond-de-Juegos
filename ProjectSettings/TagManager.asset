@@ -17,6 +17,8 @@ TagManager:
   - CustomBrick
   - Ball
   - MultyBall
+  - MultiBall
+  - Dead
   layers:
   - Default
   - TransparentFX

@@ -36,33 +36,8 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Brick brick = collision.transform.GetComponent<Brick>();
-        //if (brick != null && !brick.isDestroyed)
-        //{
-        //    SideDetection sideDetection = brick.GetComponent<SideDetection>();
-        //    if(sideDetection != null )
-        //    {
-        //        Vector3 hitPoint = collision.GetContact(0).point;
-        //        string hitSide = sideDetection.GetHitSide(hitPoint);
-        //        Debug.Log(hitSide);
-        //        switch (hitSide)
-        //        {
-        //            case "BlockRight":
-        //                UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
-        //                break;
-        //            case "BlockLeft":
-        //                UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
-        //                break;
-        //            case "BlockTop":
-        //                UpdateVelocity(new Vector2(initialVelocity.x, 6));
-        //                break;
-        //            case "BlockBottom":
-        //                UpdateVelocity(new Vector2(initialVelocity.x, -6));
-        //                break;
-        //        }
-        //        brick.DestroyBlock();
-        //    }
-        //}
+        Brick brick = collision.transform.GetComponentInParent<Brick>();
+        
         switch (collision.gameObject.tag)
         {
             case "BlockRight":
@@ -107,6 +82,10 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
 
             case "PlayerRight":
                 UpdateVelocity(GetRandomVelocity(new Vector2(4, 6)));
+                break;
+            case "Dead":
+                DestroyBall();
+                GameManager.Instance.loseTrigger.Lose();
                 break;
         }
     }

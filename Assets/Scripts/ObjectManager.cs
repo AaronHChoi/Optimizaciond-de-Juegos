@@ -31,8 +31,12 @@ public abstract class ObjectManager : MonoBehaviour
     {
 
     }
-    public virtual void ReturnObjects(GameObject obj)
+    public virtual void ReturnObjects(GameObject obj, string tag)
     {
-
+        obj.SetActive(false);
+        if (objectPool.poolDictionary.ContainsKey(tag))
+        {
+            objectPool.poolDictionary[tag].Enqueue(obj);
+        }
     }
 }

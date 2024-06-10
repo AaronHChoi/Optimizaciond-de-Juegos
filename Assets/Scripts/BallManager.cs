@@ -6,51 +6,38 @@ public class BallManager : MonoBehaviour
 {
     public ObjectPool objectPool;
     public Vector3 startPosition;
-    public Vector2 spacing;
     [SerializeField] int createdBalls = 0;
     [SerializeField] private Transform balls;
     [SerializeField] private Transform player;
     private void Start()
     {
-        if (objectPool == null)
-        {
-            Debug.LogError("ObjectPool is not assigned.");
-            return;
-        }
+        startPosition.x = -0.05f;//-0.02f;
+        startPosition.y = 0.48f;//-6.904f;
+        startPosition.z = 0.18f;//9.78f;
+        
         if (objectPool.poolDictionary == null || objectPool.poolDictionary.Count == 0)
         {
             objectPool.InitializePool();
         }
-        if (objectPool.poolDictionary == null || objectPool.poolDictionary.Count == 0)
-        {
-            Debug.LogError("ObjectPool is not initialized.");
-            return;
-        }
     }
     public void CreateBalls(int ballsToCreate)
     {
-        //ClearBalls();
-        //int ballsNeeded = ballsToCreate - createdBalls;
-        //if (createdBalls >= ballsToCreate) { return; }
         int initialCreatedBalls = createdBalls;
         for (int i = 0; i < ballsToCreate; i++)
         {
             GameObject ball = objectPool.GetPooledObject("Ball");
             if (ball != null)
             {
-                if(ball.gameObject.activeInHierarchy == false)
+                if (!ball.gameObject.activeInHierarchy)
                 {
-                    ball.transform.position = new Vector3(startPosition.x, startPosition.y, startPosition.z);
-                    ball.transform.SetParent(balls);
+                    //ball.transform.localPosition = Vector3.zero;
+                    ball.transform.position = startPosition;
+                    ball.transform.SetParent(balls, false);
                     ball.SetActive(true);
-                    
+
                     GameManager.Instance.ballsInGame++;
+                    createdBalls++;
                 }
-                createdBalls++;
-            }
-            else
-            {
-                Debug.LogError("Failed to get pooled object for Brick.");
             }
         }
         createdBalls = initialCreatedBalls + ballsToCreate;

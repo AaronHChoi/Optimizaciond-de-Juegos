@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerController playerController;
     public BallManager ballManager;
     public BallArkanoid ball;
+    public LoseTrigger loseTrigger;
+    //public MultyBall multyBall;
 
     [SerializeField] private int level;
     private int bricksToCreate;
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        ball = GetComponent<BallArkanoid>();
+        //ball = GetComponent<BallArkanoid>();
         ballsInGame = 0;
         blockLeft = GameObject.FindGameObjectsWithTag("Block").Length;
         level = 1;

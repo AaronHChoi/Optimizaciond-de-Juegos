@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class MultyBallManager : ObjectManager
+public class MultyBallManager : MonoBehaviour
 {
     public bool inGame;
 
+    public ObjectPool objectPool;
     [SerializeField] Transform multyBallManager;
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
+        if (objectPool.poolDictionary == null || objectPool.poolDictionary.Count == 0)
+        {
+            objectPool.InitializePool();
+        }
     }
-    public override void CreateObjects(Vector3 position)
+    public void CreateObjects(Vector3 position)
     {
         if (!inGame)
         {
@@ -22,11 +26,7 @@ public class MultyBallManager : ObjectManager
             mBall.SetActive(true);
         }
     }
-    public override void ClearObjects()
-    {
-        base.ClearObjects();
-    }
-    public override void ReturnObjects(GameObject mBall)
+    public void ReturnObjects(GameObject mBall)
     {
         if (objectPool != null)
         {
