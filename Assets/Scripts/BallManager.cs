@@ -11,9 +11,9 @@ public class BallManager : MonoBehaviour
     [SerializeField] private Transform player;
     private void Start()
     {
-        startPosition.x = -0.05f;//-0.02f;
-        startPosition.y = 0.48f;//-6.904f;
-        startPosition.z = 0.18f;//9.78f;
+        startPosition.x = -142f;//-0.05f;//-0.02f;
+        startPosition.y = 40.75f;//0.48f;//-6.904f;
+        startPosition.z = -29.862f;//0.18f;//9.78f;
         
         if (objectPool.poolDictionary == null || objectPool.poolDictionary.Count == 0)
         {
