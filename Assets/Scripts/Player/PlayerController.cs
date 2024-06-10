@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IUpdatable
 {
-    [SerializeField] private float moveSpeed;
-    private float bounds = 6.1f;
-    private Vector3 initialPosition;
+    float moveSpeed = 10;
+    float bounds = 6.1f;
+    float extraBound = 0.6f;
+    Vector3 initialPosition;
+    Transform playerTransform;
     private void Start()
     {
-        initialPosition = transform.position;
+        playerTransform = transform;
+        initialPosition = playerTransform.position;
         CustomUpdateManager.Instance.Register(this);
     }
     public void OnUpdate()
@@ -21,21 +24,22 @@ public class PlayerController : MonoBehaviour, IUpdatable
         float moveInput = Input.GetAxisRaw("Horizontal");
 
         Vector3 playerPosition = transform.position;
-        //playerPosition.x = Mathf.Clamp(playerPosition.x + moveInput * moveSpeed * Time.deltaTime, -bounds, bounds);
         float newPositionX = playerPosition.x + moveInput * moveSpeed * Time.deltaTime;
-        if(newPositionX < -bounds - 0.6f)
+
+        if(newPositionX < -bounds - extraBound)
         {
-            newPositionX = -bounds - 0.6f;
+            newPositionX = -bounds - extraBound;
         }
         else if(newPositionX > bounds)
         {
             newPositionX = bounds;
         }
+
         playerPosition.x = newPositionX; 
         transform.position = playerPosition;
     }
     public void ResetPosition()
     {
-        transform.position = initialPosition;
+        playerTransform.position = initialPosition;
     }
 }

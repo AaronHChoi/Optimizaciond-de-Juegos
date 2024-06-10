@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public int ballsInGame;
 
     [SerializeField] BrickManager brickManager;
-    [SerializeField] PlayerController playerController;
+    public PlayerController playerController;
     public BallManager ballManager;
     public BallArkanoid ball;
     public LoseTrigger loseTrigger;

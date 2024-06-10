@@ -7,16 +7,12 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
 {
     public Vector2 initialVelocity;
 
-    PlayerController playerController;
     Rigidbody ballRb;
-    BallManager ballManager;
-    private bool isBallMoving;
-    private Vector3 initialPosition;
+    bool isBallMoving;
+    Vector3 initialPosition;
 
     private void Start()
     {
-        playerController = GetComponentInParent<PlayerController>();
-        ballManager = GetComponentInParent<BallManager>();
         ballRb = GetComponent<Rigidbody>();
         initialPosition = transform.position;
         CustomUpdateManager.Instance.Register(this);
@@ -99,16 +95,18 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
         //ballManager.CreateBalls(1);
         ballRb.velocity = Vector3.zero;
         transform.position = initialPosition;
-        transform.parent = playerController.transform;
+        transform.parent = GameManager.Instance.playerController.transform;
         isBallMoving = false;
     }
     private Vector2 GetRandomVelocity(Vector2 baseVelocity)
     {
         float variationX = Random.Range(-2f, 2f);
-        return new Vector2(baseVelocity.x + variationX, baseVelocity.y);
+        baseVelocity.x += variationX;
+        //return new Vector2(baseVelocity.x + variationX, baseVelocity.y);
+        return baseVelocity;
     }
     public void DestroyBall()
     {
-        ballManager.ReturnBall(this.gameObject);
+        GameManager.Instance.ballManager.ReturnBall(this.gameObject);
     }
 }
