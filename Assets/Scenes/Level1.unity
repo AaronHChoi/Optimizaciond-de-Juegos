@@ -207,10 +207,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 128
+  m_fontSize: 59.1
   m_fontSizeBase: 128
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 495.70886}
+  m_margin: {x: 0, y: 36.002563, z: 0, w: 577.94904}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 218300657}
   - component: {fileID: 218300656}
   - component: {fileID: 218300655}
+  - component: {fileID: 218300658}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -288,15 +289,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7607843}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -335,6 +336,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -400, y: -400}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &218300658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218300654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_1
 --- !u!1 &276318189
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +361,7 @@ GameObject:
   - component: {fileID: 276318190}
   - component: {fileID: 276318192}
   - component: {fileID: 276318191}
+  - component: {fileID: 276318193}
   m_Layer: 5
   m_Name: Life 1
   m_TagString: Untagged
@@ -369,8 +385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 895, y: 515}
-  m_SizeDelta: {x: -1890, y: -1050}
+  m_AnchoredPosition: {x: 774.2014, y: 482.05493}
+  m_SizeDelta: {x: -1824.1099, y: -984.1098}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276318191
 MonoBehaviour:
@@ -385,8 +401,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -410,6 +426,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276318189}
   m_CullTransparentMesh: 1
+--- !u!114 &276318193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276318189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_2
 --- !u!1 &388814173
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +645,7 @@ GameObject:
   - component: {fileID: 591325803}
   - component: {fileID: 591325802}
   - component: {fileID: 591325801}
+  - component: {fileID: 591325804}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -736,6 +767,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591325799}
   m_CullTransparentMesh: 1
+--- !u!114 &591325804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591325799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_3
 --- !u!1 &647970672
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +884,7 @@ GameObject:
   - component: {fileID: 744586089}
   - component: {fileID: 744586091}
   - component: {fileID: 744586090}
+  - component: {fileID: 744586092}
   m_Layer: 5
   m_Name: Life 0
   m_TagString: Untagged
@@ -862,8 +908,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 855, y: 515}
-  m_SizeDelta: {x: -1890, y: -1050}
+  m_AnchoredPosition: {x: 646.3478, y: 482.05493}
+  m_SizeDelta: {x: -1824.1099, y: -984.1098}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744586090
 MonoBehaviour:
@@ -878,8 +924,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -903,6 +949,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744586088}
   m_CullTransparentMesh: 1
+--- !u!114 &744586092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744586088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_2
 --- !u!1 &832994921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1340,7 @@ GameObject:
   - component: {fileID: 1188675371}
   - component: {fileID: 1188675373}
   - component: {fileID: 1188675372}
+  - component: {fileID: 1188675374}
   m_Layer: 5
   m_Name: Life 2
   m_TagString: Untagged
@@ -1303,8 +1364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 935, y: 515}
-  m_SizeDelta: {x: -1890, y: -1050}
+  m_AnchoredPosition: {x: 902.05493, y: 482.05493}
+  m_SizeDelta: {x: -1824.1099, y: -984.1098}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1188675372
 MonoBehaviour:
@@ -1319,8 +1380,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1344,6 +1405,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188675370}
   m_CullTransparentMesh: 1
+--- !u!114 &1188675374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188675370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_2
 --- !u!1001 &1209060753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1927,6 +2002,7 @@ GameObject:
   - component: {fileID: 1575163177}
   - component: {fileID: 1575163176}
   - component: {fileID: 1575163175}
+  - component: {fileID: 1575163178}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -2048,6 +2124,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575163173}
   m_CullTransparentMesh: 1
+--- !u!114 &1575163178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575163173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_3
 --- !u!1 &1599623431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,6 +2244,7 @@ GameObject:
   - component: {fileID: 1672424602}
   - component: {fileID: 1672424601}
   - component: {fileID: 1672424600}
+  - component: {fileID: 1672424603}
   m_Layer: 5
   m_Name: GoToMenu
   m_TagString: Untagged
@@ -2275,6 +2366,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672424598}
   m_CullTransparentMesh: 1
+--- !u!114 &1672424603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672424598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_3
 --- !u!1 &1843566251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2334,6 +2439,7 @@ GameObject:
   - component: {fileID: 1861143537}
   - component: {fileID: 1861143536}
   - component: {fileID: 1861143535}
+  - component: {fileID: 1861143538}
   m_Layer: 5
   m_Name: GoToMenu
   m_TagString: Untagged
@@ -2455,6 +2561,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861143533}
   m_CullTransparentMesh: 1
+--- !u!114 &1861143538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861143533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_3
 --- !u!1 &1877275583
 GameObject:
   m_ObjectHideFlags: 0
@@ -2466,6 +2586,7 @@ GameObject:
   - component: {fileID: 1877275584}
   - component: {fileID: 1877275586}
   - component: {fileID: 1877275585}
+  - component: {fileID: 1877275587}
   m_Layer: 5
   m_Name: EndScreen
   m_TagString: Untagged
@@ -2515,7 +2636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2533,6 +2654,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877275583}
   m_CullTransparentMesh: 1
+--- !u!114 &1877275587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877275583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_1
 --- !u!1 &1889895813
 GameObject:
   m_ObjectHideFlags: 0
