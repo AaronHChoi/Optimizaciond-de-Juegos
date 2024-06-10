@@ -26,6 +26,14 @@ public class MultyBallManager : MonoBehaviour
             mBall.SetActive(true);
         }
     }
+    public void ClearMultyBalls()
+    {
+        MultyBall[] activeMultyBalls = FindObjectsOfType<MultyBall>();
+        foreach (MultyBall mBall in activeMultyBalls)
+        {
+            mBall.gameObject.SetActive(false);
+        }
+    }
     public void ReturnObjects(GameObject mBall)
     {
         if (objectPool != null)

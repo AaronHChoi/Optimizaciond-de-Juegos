@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public BallManager ballManager;
     public BallArkanoid ball;
     public LoseTrigger loseTrigger;
+    public MultyBallManager multyBallManager;
     //public MultyBall multyBall;
 
     [SerializeField] private int level;
@@ -49,28 +50,11 @@ public class GameManager : MonoBehaviour
         {
             level++;
             if (level <= 2)
-                LoadNextLevel();
+                //LoadNextLevel();
+                StartCoroutine(LoadLevelCoroutine(level));
             else
                 EndGame(win);
         }
-    }
-    private void LoadNextLevel()
-    {
-        ballManager.ClearBalls();
-
-        bricksToCreate = level * bricks;
-        brickManager.CreateBricks(bricksToCreate);
-
-        blockLeft = bricksToCreate;
-        ballManager.CreateBalls(1);
-        
-        playerController.ResetPosition();
-
-        BallArkanoid ball = FindObjectOfType<BallArkanoid>();
-        if (ball != null)
-            ball.ResetBall();
-
-        hud.ChangeLevel("Level " + level);
     }
     public void ResetScene()
     {
@@ -84,7 +68,12 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator LoadLevelCoroutine(int level)
     {
-        yield return null;
+        
+        ballManager.ClearBalls();
+        multyBallManager.ClearMultyBalls();
+        hud.ChangeLevel("Level " + level);
+        yield return new WaitForSeconds(1.5f);
+        //yield return null;
         if(brickManager != null)
         {
             bricksToCreate = level * bricks;
@@ -93,7 +82,30 @@ public class GameManager : MonoBehaviour
             blockLeft = bricksToCreate;
             ballManager.CreateBalls(1);
         }
+        playerController.ResetPosition();
+
+        //BallArkanoid ball = FindObjectOfType<BallArkanoid>();
+        //if (ball != null)
+        //    ball.ResetBall();
     }
+    //private void LoadNextLevel()
+    //{
+    //    ballManager.ClearBalls();
+
+    //    bricksToCreate = level * bricks;
+    //    brickManager.CreateBricks(bricksToCreate);
+
+    //    blockLeft = bricksToCreate;
+    //    ballManager.CreateBalls(1);
+
+    //    playerController.ResetPosition();
+
+    //    BallArkanoid ball = FindObjectOfType<BallArkanoid>();
+    //    if (ball != null)
+    //        ball.ResetBall();
+
+    //    hud.ChangeLevel("Level " + level);
+    //}
     private void EndGame(string result)
     {
         hud.endScreen.SetActive(true);

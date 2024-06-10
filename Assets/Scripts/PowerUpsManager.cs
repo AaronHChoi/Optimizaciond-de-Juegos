@@ -12,7 +12,6 @@ public class PowerUpsManager : MonoBehaviour
     {
         currentChance = 100f / (targetBlocksForPowerUp / 2f);
         multyBallManager = FindObjectOfType<MultyBallManager>();
-        //Debug.Log("PowerUpsManager" + blocksBrocken);
     }
     public void BlockDestroyed(Vector3 lastPosition)
     {
@@ -20,9 +19,15 @@ public class PowerUpsManager : MonoBehaviour
 
         UpdateChance();
 
+        GeneratePowerUp(lastPosition);
+    }
+    private void GeneratePowerUp(Vector3 lastPosition)
+    {
+        if (GameManager.Instance.blockLeft <= 3) { return; }
+
         if (ShouldGeneratePowerUp())
         {
-            GeneratePowerUp(lastPosition);
+            GeneratePowerUpLastPosition(lastPosition);
             ResetPowerUpChance();
         }
     }
@@ -45,25 +50,16 @@ public class PowerUpsManager : MonoBehaviour
         return randomValue <= currentChance;
     }
 
-    private void GeneratePowerUp(Vector3 lastPosition)
+    private void GeneratePowerUpLastPosition(Vector3 lastPosition)
     {
         if(multyBallManager != null)
         {
-
             multyBallManager.CreateObjects(lastPosition);
-            // Lógica para generar el power-up
-            //Debug.Log("Power-up generated!");
-            // Aquí podrías instanciar un prefab de power-up o realizar alguna otra acción
-        }
-        else
-        {
-            //Debug.LogWarning("multyBallManager is not initialized. Cannot generate power-up.");
         }
     }
 
     private void ResetPowerUpChance()
     {
-        //Debug.Log("ResetChance");
         // Reseteamos la probabilidad de generación de power-ups
         currentChance = 100f / (targetBlocksForPowerUp / 2f);
         blocksBrocken = 0;
