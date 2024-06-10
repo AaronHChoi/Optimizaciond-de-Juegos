@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 25283532}
   - component: {fileID: 25283531}
   - component: {fileID: 25283530}
+  - component: {fileID: 25283533}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -256,6 +257,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25283528}
   m_CullTransparentMesh: 1
+--- !u!114 &25283533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25283528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_3
 --- !u!1 &151551226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,6 +1101,7 @@ GameObject:
   - component: {fileID: 1010129812}
   - component: {fileID: 1010129811}
   - component: {fileID: 1010129810}
+  - component: {fileID: 1010129813}
   m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -1106,14 +1122,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.028301895, g: 0.028168395, b: 0.028168395, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1154,6 +1170,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1010129813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010129809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_0
 --- !u!1 &1136204069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,6 +1319,7 @@ GameObject:
   - component: {fileID: 1211635496}
   - component: {fileID: 1211635495}
   - component: {fileID: 1211635494}
+  - component: {fileID: 1211635497}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -1410,6 +1441,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211635492}
   m_CullTransparentMesh: 1
+--- !u!114 &1211635497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211635492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_3
 --- !u!1 &1590113982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +1669,7 @@ GameObject:
   - component: {fileID: 1668729287}
   - component: {fileID: 1668729286}
   - component: {fileID: 1668729285}
+  - component: {fileID: 1668729288}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -1745,6 +1791,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668729283}
   m_CullTransparentMesh: 1
+--- !u!114 &1668729288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668729283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_3
 --- !u!1 &1781384657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,6 +1911,7 @@ GameObject:
   - component: {fileID: 1855837525}
   - component: {fileID: 1855837524}
   - component: {fileID: 1855837523}
+  - component: {fileID: 1855837526}
   m_Layer: 5
   m_Name: ControlsButton
   m_TagString: Untagged
@@ -1972,6 +2033,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855837521}
   m_CullTransparentMesh: 1
+--- !u!114 &1855837526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855837521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a1f632d42896d48affd8f8c2145d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: d60f46355e5dc4e45b58d78da509240c, type: 2}
+  sprite_name: atlasUI_3
 --- !u!1 &1963720815
 GameObject:
   m_ObjectHideFlags: 0

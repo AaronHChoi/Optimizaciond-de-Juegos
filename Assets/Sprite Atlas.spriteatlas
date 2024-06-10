@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 32
+      m_MaxTextureSize: 512
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 1
@@ -40,35 +40,34 @@ SpriteAtlas:
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
-      enableTightPacking: 1
+      enableTightPacking: 0
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 1193005139, guid: a9da5b6c62be7b040bb4f1f0bdd2ba8c, type: 3}
-    - {fileID: 608206146, guid: a9da5b6c62be7b040bb4f1f0bdd2ba8c, type: 3}
-    - {fileID: -244030212, guid: a9da5b6c62be7b040bb4f1f0bdd2ba8c, type: 3}
-    - {fileID: 1779145800, guid: a9da5b6c62be7b040bb4f1f0bdd2ba8c, type: 3}
-    - {fileID: 21300000, guid: 621f320419ed65d4690fafa0a29d70f5, type: 3}
+    - {fileID: -1054421400, guid: f22612ad1352c0a478eb16b64a20d42d, type: 3}
+    - {fileID: 760003050, guid: f22612ad1352c0a478eb16b64a20d42d, type: 3}
+    - {fileID: 126396783, guid: f22612ad1352c0a478eb16b64a20d42d, type: 3}
+    - {fileID: 1988676073, guid: f22612ad1352c0a478eb16b64a20d42d, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
-    - a9da5b6c62be7b040bb4f1f0bdd2ba8c: 608206146
-    - a9da5b6c62be7b040bb4f1f0bdd2ba8c: 1193005139
-    - a9da5b6c62be7b040bb4f1f0bdd2ba8c: 1779145800
-    - a9da5b6c62be7b040bb4f1f0bdd2ba8c: -244030212
+    - f22612ad1352c0a478eb16b64a20d42d: 1988676073
+    - f22612ad1352c0a478eb16b64a20d42d: 126396783
+    - f22612ad1352c0a478eb16b64a20d42d: 760003050
+    - f22612ad1352c0a478eb16b64a20d42d: -1054421400
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 608206146, guid: a9da5b6c62be7b040bb4f1f0bdd2ba8c, type: 3}
-  - {fileID: 1193005139, guid: a9da5b6c62be7b040bb4f1f0bdd2ba8c, type: 3}
-  - {fileID: 1779145800, guid: a9da5b6c62be7b040bb4f1f0bdd2ba8c, type: 3}
-  - {fileID: -244030212, guid: a9da5b6c62be7b040bb4f1f0bdd2ba8c, type: 3}
+  - {fileID: 1988676073, guid: f22612ad1352c0a478eb16b64a20d42d, type: 3}
+  - {fileID: 126396783, guid: f22612ad1352c0a478eb16b64a20d42d, type: 3}
+  - {fileID: 760003050, guid: f22612ad1352c0a478eb16b64a20d42d, type: 3}
+  - {fileID: -1054421400, guid: f22612ad1352c0a478eb16b64a20d42d, type: 3}
   m_PackedSpriteNamesToIndex:
-  - atlas_1
-  - atlas_0
-  - atlas_3
-  - atlas_2
+  - atlasUI_3
+  - atlasUI_2
+  - atlasUI_1
+  - atlasUI_0
   m_RenderDataMap: {}
   m_Tag: Sprite Atlas
   m_IsVariant: 0
