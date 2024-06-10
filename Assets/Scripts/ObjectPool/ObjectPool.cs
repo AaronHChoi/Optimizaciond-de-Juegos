@@ -24,27 +24,12 @@ public class ObjectPool : MonoBehaviour
     }
     public GameObject GetPooledObject(string tag)
     {
-        //Debug.Log("GetPooledObject called with tag: " + tag);
-
-        if (!poolDictionary.ContainsKey(tag))
+        if (!poolDictionary.ContainsKey(tag) && poolDictionary[tag].Count == 0)
         {
-            Debug.LogError("Pool with tag " + tag + " doesn't exist");
-            return null;
-        }
-
-        if (poolDictionary[tag].Count == 0)
-        {
-            Debug.LogWarning("Pool with tag " + tag + " is empty.");
             return null;
         }
 
         GameObject obj = poolDictionary[tag].Dequeue();
-
-        if (obj == null)
-        {
-            Debug.LogWarning("Object with tag " + tag + " is null.");
-            return null;
-        }
 
         poolDictionary[tag].Enqueue(obj);
         return obj;
@@ -56,10 +41,6 @@ public class ObjectPool : MonoBehaviour
         if (poolDictionary.ContainsKey(tag))
         {
             poolDictionary[tag].Enqueue(obj);
-        }
-        else
-        {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
         }
     }
 }

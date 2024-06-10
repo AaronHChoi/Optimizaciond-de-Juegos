@@ -4,29 +4,22 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    public bool isDestroyed = false;
-    public Vector3 lastPosition;
-    private BrickManager brickManager;
-    private PowerUpsManager powerUpManager;
-    private void Start()
-    {
-        brickManager = GetComponentInParent<BrickManager>();
-        powerUpManager = FindObjectOfType<PowerUpsManager>();
-    }
+    public bool IsDestroyed = false;
+    public Vector3 LastPosition;
     public void ResetBrick()
     {
-        isDestroyed = false;
+        IsDestroyed = false;
     }
     public void DestroyBlock()
     {
-        if (!isDestroyed)
+        var gameManager = GameManager.Instance;
+        if (!IsDestroyed)
         {
-            isDestroyed = true;
-            lastPosition = transform.position;
-            brickManager.ReturnBrick(this.gameObject);
-            GameManager.Instance.BlockDestroyed();
-            powerUpManager.BlockDestroyed(lastPosition);
-            //Debug.Log(GameManager.Instance.blockLeft);
+            IsDestroyed = true;
+            LastPosition = transform.position;
+            gameManager.brickManager.ReturnBrick(this.gameObject);
+            gameManager.BlockDestroyed();
+            gameManager.powerUpsManager.BlockDestroyed(LastPosition);
         }
     }
 }

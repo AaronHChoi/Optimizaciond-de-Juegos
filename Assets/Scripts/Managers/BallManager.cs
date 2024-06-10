@@ -4,43 +4,32 @@ using UnityEngine;
 
 public class BallManager : MonoBehaviour
 {
-    public ObjectPool objectPool;
-    public Vector3 startPosition;
-    [SerializeField] int createdBalls = 0;
-    [SerializeField] private Transform balls;
-    [SerializeField] private Transform player;
+    public ObjectPool ObjectPool;
+
+    Vector3 startPosition = new Vector3(-142f, 40.75f, -29.862f); 
+    [SerializeField] Transform balls;
+
     private void Start()
     {
-        startPosition.x = -142f;//-0.05f;//-0.02f;
-        startPosition.y = 40.75f;//0.48f;//-6.904f;
-        startPosition.z = -29.862f;//0.18f;//9.78f;
-        
-        if (objectPool.poolDictionary == null || objectPool.poolDictionary.Count == 0)
+        if (ObjectPool.poolDictionary == null || ObjectPool.poolDictionary.Count == 0)
         {
-            objectPool.InitializePool();
+            ObjectPool.InitializePool();
         }
     }
     public void CreateBalls(int ballsToCreate)
     {
-        int initialCreatedBalls = createdBalls;
         for (int i = 0; i < ballsToCreate; i++)
         {
-            GameObject ball = objectPool.GetPooledObject("Ball");
-            if (ball != null)
+            GameObject ball = ObjectPool.GetPooledObject("Ball");
+            if (ball != null && !ball.activeInHierarchy)
             {
-                if (!ball.gameObject.activeInHierarchy)
-                {
-                    //ball.transform.localPosition = Vector3.zero;
-                    ball.transform.position = startPosition;
-                    ball.transform.SetParent(balls, false);
-                    ball.SetActive(true);
+                ball.transform.position = startPosition;
+                ball.transform.SetParent(balls, false);
+                ball.SetActive(true);
 
-                    GameManager.Instance.ballsInGame++;
-                    createdBalls++;
-                }
+                GameManager.Instance.ballsInGame++;
             }
         }
-        createdBalls = initialCreatedBalls + ballsToCreate;
     }
     public void ClearBalls()
     {
@@ -49,13 +38,12 @@ public class BallManager : MonoBehaviour
         {
             ball.gameObject.SetActive(false);
         }
-        createdBalls = 0;
     }
     public void ReturnBall(GameObject ball)
     {
-        if (objectPool != null)
+        if (ObjectPool != null)
         {
-            objectPool.ReturnObjectToPool(ball, "Ball");
+            ObjectPool.ReturnObjectToPool(ball, "Ball");
         }
     }
 }

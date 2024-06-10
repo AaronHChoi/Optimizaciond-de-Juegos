@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class InGameMenu : MonoBehaviour, IUpdatable
 {
-    public GameObject menuUI;
-    private bool isPaused = false;
+    [SerializeField] GameObject menuUI;
+    bool isPaused = false;
 
     private void Start()
     {

@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class BallArkanoid : MonoBehaviour, IUpdatable
 {
-    public Vector2 initialVelocity;
-
+    Vector2 initialVelocity;
     Rigidbody ballRb;
     bool isBallMoving;
     Vector3 initialPosition;
@@ -92,7 +91,6 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     }
     public void ResetBall()
     {
-        //ballManager.CreateBalls(1);
         ballRb.velocity = Vector3.zero;
         transform.position = initialPosition;
         transform.parent = GameManager.Instance.playerController.transform;
@@ -102,7 +100,6 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     {
         float variationX = Random.Range(-2f, 2f);
         baseVelocity.x += variationX;
-        //return new Vector2(baseVelocity.x + variationX, baseVelocity.y);
         return baseVelocity;
     }
     public void DestroyBall()

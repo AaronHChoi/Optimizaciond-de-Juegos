@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour
     public HUD hud;
     public int ballsInGame;
 
-    [SerializeField] BrickManager brickManager;
+    public BrickManager brickManager;
     public PlayerController playerController;
     public BallManager ballManager;
     public BallArkanoid ball;
     public LoseTrigger loseTrigger;
     public MultyBallManager multyBallManager;
+    public PowerUpsManager powerUpsManager;
     //public MultyBall multyBall;
 
     [SerializeField] private int level;

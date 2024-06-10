@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private GameObject creditsPanel;
-    [SerializeField] private GameObject controlsPanel;
-    [SerializeField] private GameObject Back;
+    [SerializeField] GameObject mainMenuPanel;
+    [SerializeField] GameObject creditsPanel;
+    [SerializeField] GameObject controlsPanel;
+    [SerializeField] GameObject Back;
     public void PlayButton()
     {
         SceneManager.LoadScene(1);

@@ -3290,7 +3290,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2271669443780120661, guid: 405c53f9a0e4bb040acff8278be48d42, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3791013659699269930, guid: 405c53f9a0e4bb040acff8278be48d42, type: 3}
       insertIndex: -1
@@ -3372,7 +3373,7 @@ PrefabInstance:
     - target: {fileID: 1592827955796031837, guid: 1e41831503f06ac409422d750285cb06, type: 3}
       propertyPath: powerUpsManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 388814175}
     - target: {fileID: 1592827955796031837, guid: 1e41831503f06ac409422d750285cb06, type: 3}
       propertyPath: multyBallManager
       value: 
