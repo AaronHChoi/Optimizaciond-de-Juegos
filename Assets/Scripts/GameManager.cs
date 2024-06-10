@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] BrickManager brickManager;
     [SerializeField] PlayerController playerController;
-    [SerializeField] BallManager ballManager;
+    public BallManager ballManager;
+    public BallArkanoid ball;
 
     [SerializeField] private int level;
     private int bricksToCreate;
@@ -32,10 +33,11 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        ball = GetComponent<BallArkanoid>();
         ballsInGame = 0;
         blockLeft = GameObject.FindGameObjectsWithTag("Block").Length;
         level = 1;
-        Debug.Log(blockLeft);
+        //Debug.Log(blockLeft);
         StartCoroutine(LoadLevelCoroutine(level));
     }
     public void BlockDestroyed()
@@ -94,5 +96,6 @@ public class GameManager : MonoBehaviour
     {
         hud.endScreen.SetActive(true);
         hud.ChangeResult(result);
+        Time.timeScale = 0f;
     }
 }

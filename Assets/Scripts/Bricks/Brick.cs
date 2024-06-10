@@ -26,7 +26,7 @@ public class Brick : MonoBehaviour
             brickManager.ReturnBrick(this.gameObject);
             GameManager.Instance.BlockDestroyed();
             powerUpManager.BlockDestroyed(lastPosition);
-            Debug.Log(GameManager.Instance.blockLeft);
+            //Debug.Log(GameManager.Instance.blockLeft);
         }
     }
 }

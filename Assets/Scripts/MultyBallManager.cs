@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 public class MultyBallManager : ObjectManager
 {
     public bool inGame;
+
+    [SerializeField] Transform multyBallManager;
     protected override void Start()
     {
         base.Start();
@@ -16,6 +18,7 @@ public class MultyBallManager : ObjectManager
         {
             GameObject mBall = objectPool.GetPooledObject("MultyBall");
             mBall.transform.position = new Vector3(position.x, position.y, position.z - 1);
+            mBall.transform.SetParent(multyBallManager);
             mBall.SetActive(true);
         }
     }
@@ -23,8 +26,11 @@ public class MultyBallManager : ObjectManager
     {
         base.ClearObjects();
     }
-    public override void ReturnObjects()
+    public override void ReturnObjects(GameObject mBall)
     {
-        base.ReturnObjects();
+        if (objectPool != null)
+        {
+            objectPool.ReturnObjectToPool(mBall, "MultyBall");
+        }
     }
 }

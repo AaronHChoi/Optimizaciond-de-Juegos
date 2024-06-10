@@ -564,6 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 1274737169}
   inGame: 0
+  multyBallManager: {fileID: 471866193}
 --- !u!1 &480102953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,11 +1042,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef671c52b26dc4f43aa28f36e2de37f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08
+      value: 20.14
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef671c52b26dc4f43aa28f36e2de37f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef671c52b26dc4f43aa28f36e2de37f7, type: 3}
       propertyPath: m_LocalPosition.z

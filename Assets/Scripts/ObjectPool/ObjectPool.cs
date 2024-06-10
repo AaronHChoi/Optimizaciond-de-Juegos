@@ -24,7 +24,7 @@ public class ObjectPool : MonoBehaviour
     }
     public GameObject GetPooledObject(string tag)
     {
-        Debug.Log("GetPooledObject called with tag: " + tag);
+        //Debug.Log("GetPooledObject called with tag: " + tag);
 
         if (!poolDictionary.ContainsKey(tag))
         {

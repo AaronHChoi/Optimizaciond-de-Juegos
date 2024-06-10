@@ -6,6 +6,7 @@ using UnityEngine;
 public class MultyBall : MonoBehaviour
 {
     BallManager ballManager;
+    MultyBallManager multyBallManager;
     Rigidbody multyballRb;
     
     void Start()
@@ -22,5 +23,9 @@ public class MultyBall : MonoBehaviour
             ballManager.CreateBalls(2);
             gameObject.SetActive(false);
         }
+    }
+    public void DestroyMultyBall()
+    {
+        multyBallManager.ReturnObjects(this.gameObject);
     }
 }

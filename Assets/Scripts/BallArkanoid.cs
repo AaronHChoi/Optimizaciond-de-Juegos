@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallArkanoid : MonoBehaviour, IUpdatable
@@ -36,34 +37,54 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     private void OnCollisionEnter(Collision collision)
     {
         Brick brick = collision.transform.GetComponent<Brick>();
-        if (brick != null && !brick.isDestroyed)
-        {
-            SideDetection sideDetection = brick.GetComponent<SideDetection>();
-            if(sideDetection != null )
-            {
-                Vector3 hitPoint = collision.GetContact(0).point;
-                string hitSide = sideDetection.GetHitSide(hitPoint);
-                //Debug.Log(hitSide);
-                switch (hitSide)
-                {
-                    case "Right":
-                        UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
-                        break;
-                    case "Left":
-                        UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
-                        break;
-                    case "Top":
-                        UpdateVelocity(new Vector2(initialVelocity.x, 6));
-                        break;
-                    case "Bottom":
-                        UpdateVelocity(new Vector2(initialVelocity.x, -6));
-                        break;
-                }
-                brick.DestroyBlock();
-            }
-        }
+        //if (brick != null && !brick.isDestroyed)
+        //{
+        //    SideDetection sideDetection = brick.GetComponent<SideDetection>();
+        //    if(sideDetection != null )
+        //    {
+        //        Vector3 hitPoint = collision.GetContact(0).point;
+        //        string hitSide = sideDetection.GetHitSide(hitPoint);
+        //        Debug.Log(hitSide);
+        //        switch (hitSide)
+        //        {
+        //            case "BlockRight":
+        //                UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
+        //                break;
+        //            case "BlockLeft":
+        //                UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
+        //                break;
+        //            case "BlockTop":
+        //                UpdateVelocity(new Vector2(initialVelocity.x, 6));
+        //                break;
+        //            case "BlockBottom":
+        //                UpdateVelocity(new Vector2(initialVelocity.x, -6));
+        //                break;
+        //        }
+        //        brick.DestroyBlock();
+        //    }
+        //}
         switch (collision.gameObject.tag)
         {
+            case "BlockRight":
+                UpdateVelocity(new Vector2(4, initialVelocity.y > 0 ? 6 : -6));
+                brick.DestroyBlock();
+                break;
+
+            case "BlockLeft":
+                UpdateVelocity(new Vector2(-4, initialVelocity.y > 0 ? 6 : -6));
+                brick.DestroyBlock();
+                break;
+
+            case "BlockTop":
+                UpdateVelocity(new Vector2(initialVelocity.x, 6));
+                brick.DestroyBlock();
+                break;
+
+            case "BlockBottom":
+                UpdateVelocity(new Vector2(initialVelocity.x, -6));
+                brick.DestroyBlock();
+                break;
+
             case "Top":
                 UpdateVelocity(new Vector2(initialVelocity.x, -6));
                 break;

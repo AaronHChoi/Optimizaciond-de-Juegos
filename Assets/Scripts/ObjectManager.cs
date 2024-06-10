@@ -31,7 +31,7 @@ public abstract class ObjectManager : MonoBehaviour
     {
 
     }
-    public virtual void ReturnObjects()
+    public virtual void ReturnObjects(GameObject obj)
     {
 
     }

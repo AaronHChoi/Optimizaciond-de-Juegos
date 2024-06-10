@@ -38,18 +38,18 @@ public class SideDetection : MonoBehaviour
     }
     private bool IsRightSide(Vector3 localHitPoint)
     {
-        return localHitPoint.x > boxSize.x / 2 - 0.01f;
+        return localHitPoint.x > boxSize.x / 2 - 0.1f;
     }
     private bool IsLeftSide(Vector3 localHitPoint)
     {
-        return localHitPoint.x < -boxSize.x / 2 + 0.01f;
+        return localHitPoint.x < -boxSize.x / 2 + 0.1f;
     }
     private bool IsTopSide(Vector3 localHitPoint)
     {
-        return localHitPoint.y > boxSize.y / 2 - 0.01f;
+        return localHitPoint.y > boxSize.y / 2 - 0.1f;
     }
     private bool IsBottomSide(Vector3 localHitPoint)
     {
-        return localHitPoint.y < -boxSize.y / 2 + 0.01f;
+        return localHitPoint.y < -boxSize.y / 2 + 0.1f;
     }
 }
