@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MultyBall : MonoBehaviour, IUpdatable
 {
+    public AudioClip MultyBallSFX;
     Rigidbody multyballRb;
     private Vector2 fall;
 
@@ -19,6 +20,7 @@ public class MultyBall : MonoBehaviour, IUpdatable
         var gameManager = GameManager.Instance;
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "PlayerLeft" || collision.gameObject.tag == "PlayerRight")
         {
+            AudioManager.Instance.PlaySFX(MultyBallSFX);
             gameManager.ballManager.CreateBalls(1);
             gameManager.multyBallManager.ReturnObjects(this.gameObject);
             gameManager.PowerActive = false;

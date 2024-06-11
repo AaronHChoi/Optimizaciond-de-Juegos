@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26461a5c8d1ae534ab00f22621145686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MultyBallSFX: {fileID: 8300000, guid: 806d0c3ac7b042d48819b6d26c7230c2, type: 3}
 --- !u!1001 &1218539705678315549
 PrefabInstance:
   m_ObjectHideFlags: 0

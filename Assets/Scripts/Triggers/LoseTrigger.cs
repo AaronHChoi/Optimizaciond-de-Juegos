@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LoseTrigger : MonoBehaviour
 {
+    public AudioClip LoseSFX;
     public void Lose()
     {
         var gameManager = GameManager.Instance;
@@ -13,6 +14,7 @@ public class LoseTrigger : MonoBehaviour
 
         if (gameManager.BallsInGame <= 0)
         {
+            AudioManager.Instance.PlaySFX(LoseSFX);
             gameManager.LoseLife();
             gameManager.playerController.ResetPosition();
             gameManager.ballManager.CreateBalls(1);
