@@ -69,17 +69,14 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
 
             case "Player":
                 UpdateVelocity(GetRandomVelocity(new Vector2(0, 6)));
-                Debug.Log("P");
                 break;
 
             case "PlayerLeft":
                 UpdateVelocity(GetRandomVelocity(new Vector2(-4, 6)));
-                Debug.Log("L");
                 break;
 
             case "PlayerRight":
                 UpdateVelocity(GetRandomVelocity(new Vector2(4, 6)));
-                Debug.Log("R");
                 break;
 
             case "Dead":
