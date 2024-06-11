@@ -99,7 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7d98c6e325b3b49ae817cd621735b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoseSFX: {fileID: 8300000, guid: 759f1cdc67a1f8043a2364b4aadf7201, type: 3}
+  LaunchSFX: {fileID: 8300000, guid: 9bffa6f9cf4da5a4e9a7ba4d1b8e5ebb, type: 3}
   initialVelocity: {x: 4, y: 6}
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &7633527130743517364
 Rigidbody:
   m_ObjectHideFlags: 0

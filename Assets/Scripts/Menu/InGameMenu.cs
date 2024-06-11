@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class InGameMenu : MonoBehaviour, IUpdatable
 {
+    public AudioClip ButtonSFX;
+
     [SerializeField] GameObject menuUI;
     bool isPaused = false;
 
@@ -39,11 +41,13 @@ public class InGameMenu : MonoBehaviour, IUpdatable
     }
     public void GoToMenu()
     {
+        AudioManager.Instance.PlaySFX(ButtonSFX);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
     public void QuitGame()
     {
+        AudioManager.Instance.PlaySFX(ButtonSFX);
         Application.Quit();
     }
 }

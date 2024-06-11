@@ -361,8 +361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66dbcd1cad66744daa50055b9d20e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroyed: 0
-  lastPosition: {x: 0, y: 0, z: 0}
+  DestroyBlockSFX: {fileID: 8300000, guid: f040a2fecc2f37f4d8607cd5acca8b90, type: 3}
+  IsDestroyed: 0
+  LastPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &3373879915731423275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bc8f887022f04ee4b8e9c26a274db0a2, type: 3}

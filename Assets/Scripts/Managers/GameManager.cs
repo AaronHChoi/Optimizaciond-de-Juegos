@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public int BlockLeft;
     public int BallsInGame;
     public bool PowerActive = false;
-
+    public AudioClip WinSFX;
+    public AudioClip LoseSFX;
     public HUD Hud;
     public BrickManager brickManager;
     public PlayerController playerController;
@@ -51,13 +52,19 @@ public class GameManager : MonoBehaviour
             if (level <= 2)
                 StartCoroutine(LoadLevelCoroutine(level));
             else
+            {
+                AudioManager.Instance.PlaySFX(WinSFX);
                 EndGame(win);
+            }
         }
     }
     public void ResetScene()
     {
         if(lives <= 0)
+        {
+            AudioManager.Instance.PlaySFX(LoseSFX);
             EndGame(lose);
+        }
     }
     public void LoseLife()
     {

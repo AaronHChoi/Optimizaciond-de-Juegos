@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BallArkanoid : MonoBehaviour, IUpdatable
 {
+    public AudioClip LaunchSFX;
+
     [SerializeField] Vector2 initialVelocity;
     [SerializeField] Vector3 initialPosition;
     bool isBallMoving;
@@ -25,6 +27,7 @@ public class BallArkanoid : MonoBehaviour, IUpdatable
     }
     private void LaunchBall()
     {
+        AudioManager.Instance.PlaySFX(LaunchSFX);
         transform.parent = null;
         ballRb.velocity = GetRandomVelocity(new Vector2(0, 6));
         isBallMoving = true;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    public AudioClip DestroyBlockSFX;
     public bool IsDestroyed = false;
     public Vector3 LastPosition;
     public void ResetBrick()
@@ -12,6 +13,7 @@ public class Brick : MonoBehaviour
     }
     public void DestroyBlock()
     {
+        AudioManager.Instance.PlaySFX(DestroyBlockSFX);
         var gameManager = GameManager.Instance;
         if (!IsDestroyed)
         {

@@ -20,25 +20,17 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void PlayMusic(AudioClip clip)
-    {
-        musicSource.clip = clip;
-        musicSource.Play();
-    }
-    public void StopMusic()
-    {
-        musicSource.Stop();
-    }
-    public void SetMusicVolume(float volume)
-    {
-        musicSource.volume = volume;
-    }
+    //public void PlayMusic(AudioClip clip)
+    //{
+    //    musicSource.clip = clip;
+    //    musicSource.Play();
+    //}
+    //public void StopMusic()
+    //{
+    //    musicSource.Stop();
+    //}
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
-    }
-    public void SetSFXVolume(float volume)
-    {
-        sfxSource.volume = volume;
     }
 }
