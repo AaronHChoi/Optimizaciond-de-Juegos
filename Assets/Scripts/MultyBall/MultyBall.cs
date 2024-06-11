@@ -21,9 +21,11 @@ public class MultyBall : MonoBehaviour, IUpdatable
         {
             gameManager.ballManager.CreateBalls(1);
             gameManager.multyBallManager.ReturnObjects(this.gameObject);
+            gameManager.PowerActive = false;
         } else if (collision.gameObject.tag == "Dead")
         {
             gameManager.multyBallManager.ReturnObjects(this.gameObject);
+            gameManager.PowerActive = false;
         }
     }
     public void DestroyMultyBall()

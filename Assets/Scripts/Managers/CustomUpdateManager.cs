@@ -5,7 +5,7 @@ using UnityEngine;
 public class CustomUpdateManager : MonoBehaviour
 {
     public static CustomUpdateManager Instance;
-    private List<IUpdatable> updatables = new List<IUpdatable>();
+    private HashSet<IUpdatable> updatables = new HashSet<IUpdatable>();
 
     private void Awake()
     {
@@ -21,17 +21,16 @@ public class CustomUpdateManager : MonoBehaviour
     }
     private void Update()
     {
-        foreach (IUpdatable updatable in updatables)
+        var updatablesCopy = new List<IUpdatable>(updatables);
+        foreach (IUpdatable updatable in updatablesCopy)
             updatable.OnUpdate();
     }
     public void Register(IUpdatable updatable)
     {
-        if (!updatables.Contains(updatable))
-            updatables.Add(updatable);
+        updatables.Add(updatable);
     }
     public void Unregister(IUpdatable updatable)
     {
-        if (updatables.Contains(updatable))
-            updatables.Remove(updatable);
+        updatables.Remove(updatable);
     }
 }

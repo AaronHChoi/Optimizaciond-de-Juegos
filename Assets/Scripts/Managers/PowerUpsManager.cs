@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PowerUpsManager : MonoBehaviour
 {
-    public int targetBlocksForPowerUp = 75;
-    public int blocksBrocken;
-    [SerializeField] private float currentChance = 0;
-    MultyBallManager multyBallManager;
+    [SerializeField] int targetBlocksForPowerUp = 75;
+    [SerializeField] int blocksBrocken;
+    [SerializeField] float currentChance = 0;
     private void Start()
     {
         currentChance = 100f / (targetBlocksForPowerUp / 2f);
-        multyBallManager = FindObjectOfType<MultyBallManager>();
     }
     public void BlockDestroyed(Vector3 lastPosition)
     {
@@ -23,7 +21,7 @@ public class PowerUpsManager : MonoBehaviour
     }
     private void GeneratePowerUp(Vector3 lastPosition)
     {
-        if (GameManager.Instance.blockLeft <= 3) { return; }
+        if (GameManager.Instance.BlockLeft <= 3 || GameManager.Instance.PowerActive) { return; }
 
         if (ShouldGeneratePowerUp())
         {
@@ -33,34 +31,28 @@ public class PowerUpsManager : MonoBehaviour
     }
     private void UpdateChance()
     {
-        // Incrementamos la probabilidad de forma acumulativa
         currentChance += 100f / targetBlocksForPowerUp;
 
-        // Aseguramos que la probabilidad no exceda el 100%
         if (currentChance > 100f)
         {
             currentChance = 100f;
         }
     }
-
     private bool ShouldGeneratePowerUp()
     {
-        // Generamos un número aleatorio y comparamos con la probabilidad actual
         float randomValue = Random.Range(0f, 100f);
         return randomValue <= currentChance;
     }
-
     private void GeneratePowerUpLastPosition(Vector3 lastPosition)
     {
-        if(multyBallManager != null)
+        if(GameManager.Instance.multyBallManager != null)
         {
-            multyBallManager.CreateObjects(lastPosition);
+            GameManager.Instance.multyBallManager.CreateObjects(lastPosition);
+            GameManager.Instance.PowerActive = true;
         }
     }
-
     private void ResetPowerUpChance()
     {
-        // Reseteamos la probabilidad de generación de power-ups
         currentChance = 100f / (targetBlocksForPowerUp / 2f);
         blocksBrocken = 0;
     }

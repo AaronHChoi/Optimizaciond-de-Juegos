@@ -9,9 +9,9 @@ public class LoseTrigger : MonoBehaviour
     {
         var gameManager = GameManager.Instance;
 
-        gameManager.ballsInGame--;
+        gameManager.BallsInGame--;
 
-        if (gameManager.ballsInGame <= 0)
+        if (gameManager.BallsInGame <= 0)
         {
             gameManager.LoseLife();
             gameManager.playerController.ResetPosition();

@@ -9,7 +9,7 @@ public class BallManager : MonoBehaviour
     Vector3 startPosition = new Vector3(-142f, 40.75f, -29.862f); 
     [SerializeField] Transform balls;
 
-    private void Start()
+    private void Awake()
     {
         if (ObjectPool.poolDictionary == null || ObjectPool.poolDictionary.Count == 0)
         {
@@ -27,7 +27,7 @@ public class BallManager : MonoBehaviour
                 ball.transform.SetParent(balls, false);
                 ball.SetActive(true);
 
-                GameManager.Instance.ballsInGame++;
+                GameManager.Instance.BallsInGame++;
             }
         }
     }

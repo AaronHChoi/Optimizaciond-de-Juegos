@@ -8,10 +8,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int blockLeft;
-    public HUD hud;
-    public int ballsInGame;
+    public int BlockLeft;
+    public int BallsInGame;
+    public bool PowerActive = false;
 
+    public HUD Hud;
     public BrickManager brickManager;
     public PlayerController playerController;
     public BallManager ballManager;
@@ -19,14 +20,13 @@ public class GameManager : MonoBehaviour
     public LoseTrigger loseTrigger;
     public MultyBallManager multyBallManager;
     public PowerUpsManager powerUpsManager;
-    //public MultyBall multyBall;
 
-    [SerializeField] private int level;
-    private int bricksToCreate;
-    private int bricks = 9;
-    private int lives = 3;
-    private string win = "Win";
-    private string lose = "Lose";
+    [SerializeField] int level;
+    int bricksToCreate;
+    int bricks = 9;
+    int lives = 3;
+    string win = "Win";
+    string lose = "Lose";
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -37,21 +37,18 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        //ball = GetComponent<BallArkanoid>();
-        ballsInGame = 0;
-        blockLeft = GameObject.FindGameObjectsWithTag("Block").Length;
+        BallsInGame = 0;
+        BlockLeft = GameObject.FindGameObjectsWithTag("Block").Length;
         level = 1;
-        //Debug.Log(blockLeft);
         StartCoroutine(LoadLevelCoroutine(level));
     }
     public void BlockDestroyed()
     {
-        blockLeft--;
-        if(blockLeft <= 0)
+        BlockLeft--;
+        if(BlockLeft <= 0)
         {
             level++;
             if (level <= 2)
-                //LoadNextLevel();
                 StartCoroutine(LoadLevelCoroutine(level));
             else
                 EndGame(win);
@@ -65,52 +62,29 @@ public class GameManager : MonoBehaviour
     public void LoseLife()
     {
         lives--;
-        hud.DeactivateLife(lives);
+        Hud.DeactivateLife(lives);
     }
     private IEnumerator LoadLevelCoroutine(int level)
     {
-        
         ballManager.ClearBalls();
         multyBallManager.ClearMultyBalls();
-        hud.ChangeLevel("Level " + level);
-        yield return new WaitForSeconds(1.5f);
-        //yield return null;
+        Hud.ChangeLevel("Level " + level);
+        yield return new WaitForSeconds(0.5f);
+
         if(brickManager != null)
         {
             bricksToCreate = level * bricks;
             brickManager.CreateBricks(bricksToCreate);
             
-            blockLeft = bricksToCreate;
+            BlockLeft = bricksToCreate;
             ballManager.CreateBalls(1);
         }
         playerController.ResetPosition();
-
-        //BallArkanoid ball = FindObjectOfType<BallArkanoid>();
-        //if (ball != null)
-        //    ball.ResetBall();
     }
-    //private void LoadNextLevel()
-    //{
-    //    ballManager.ClearBalls();
-
-    //    bricksToCreate = level * bricks;
-    //    brickManager.CreateBricks(bricksToCreate);
-
-    //    blockLeft = bricksToCreate;
-    //    ballManager.CreateBalls(1);
-
-    //    playerController.ResetPosition();
-
-    //    BallArkanoid ball = FindObjectOfType<BallArkanoid>();
-    //    if (ball != null)
-    //        ball.ResetBall();
-
-    //    hud.ChangeLevel("Level " + level);
-    //}
     private void EndGame(string result)
     {
-        hud.endScreen.SetActive(true);
-        hud.ChangeResult(result);
+        Hud.endScreen.SetActive(true);
+        Hud.ChangeResult(result);
         Time.timeScale = 0f;
     }
 }

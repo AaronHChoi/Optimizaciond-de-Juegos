@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class BallArkanoid : MonoBehaviour, IUpdatable
 {
-    Vector2 initialVelocity;
-    Rigidbody ballRb;
+    [SerializeField] Vector2 initialVelocity;
+    [SerializeField] Vector3 initialPosition;
     bool isBallMoving;
-    Vector3 initialPosition;
+    Rigidbody ballRb;
 
     private void Start()
     {

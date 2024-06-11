@@ -4,27 +4,18 @@ using UnityEngine;
 
 public class BrickManager : MonoBehaviour
 {
-    public ObjectPool objectPool;
-    public int rows = 3;
-    public int columns = 9;
-    public Vector3 startPosition;
-    public Vector2 spacing;
-    [SerializeField] private Transform bricks;
-    private void Start()
+    public ObjectPool ObjectPool;
+
+    [SerializeField] int rows = 3;
+    [SerializeField] int columns = 9;
+    [SerializeField] Vector3 startPosition;
+    [SerializeField] Vector2 spacing;
+    [SerializeField] Transform bricks;
+    private void Awake()
     {
-        if (objectPool == null)
+        if (ObjectPool.poolDictionary == null || ObjectPool.poolDictionary.Count == 0)
         {
-            Debug.LogError("ObjectPool is not assigned.");
-            return;
-        }
-        if (objectPool.poolDictionary == null || objectPool.poolDictionary.Count == 0)
-        {
-            objectPool.InitializePool();
-        }
-        if (objectPool.poolDictionary == null || objectPool.poolDictionary.Count == 0)
-        {
-            Debug.LogError("ObjectPool is not initialized.");
-            return;
+            ObjectPool.InitializePool();
         }
     }
     public void CreateBricks(int bricksToCreate)
@@ -36,17 +27,13 @@ public class BrickManager : MonoBehaviour
             for (int col = 0; col < columns; col++)
             {
                 if (createdBricks >= bricksToCreate) { return; }
-                GameObject brick = objectPool.GetPooledObject("Block");
+                GameObject brick = ObjectPool.GetPooledObject("Block");
                 if (brick != null)
                 {
                     brick.transform.position = new Vector3(startPosition.x + (col * spacing.x), startPosition.y - (row * spacing.y), startPosition.z);
                     brick.transform.SetParent(bricks);
                     brick.SetActive(true);
                     createdBricks++;
-                }
-                else
-                {
-                    Debug.LogError("Failed to get pooled object for Brick.");
                 }
             }
         }
@@ -60,12 +47,12 @@ public class BrickManager : MonoBehaviour
     }
     public void ReturnBrick(GameObject brick)
     {
-        if (objectPool != null)
+        if (ObjectPool != null)
         {
             Brick brickComponent = brick.GetComponent<Brick>();
-            if(brickComponent != null)
+            if (brickComponent != null)
                 brickComponent.ResetBrick();
-            objectPool.ReturnObjectToPool(brick, "Block");
+            ObjectPool.ReturnObjectToPool(brick, "Block");
         }
     }
 }

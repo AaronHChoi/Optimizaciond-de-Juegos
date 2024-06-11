@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.7607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -531,9 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1422601e5ee14034890ecb200e3ed240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGame: 0
-  objectPool: {fileID: 1274737169}
-  multyBallManager: {fileID: 0}
+  ObjectPool: {fileID: 1274737169}
 --- !u!1 &480102953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,7 +2627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3187,7 +3185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7002720235391666421, guid: 52a534c119c755040be2e9e99c128d18, type: 3}
       propertyPath: pools.Array.data[2].size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7002720235391666421, guid: 52a534c119c755040be2e9e99c128d18, type: 3}
       propertyPath: pools.Array.data[0].prefab
@@ -3226,6 +3224,10 @@ PrefabInstance:
       propertyPath: rows
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4729271880130860860, guid: 051cbb1f86f93604183c5f1e78db651c, type: 3}
+      propertyPath: ObjectPool
+      value: 
+      objectReference: {fileID: 1274737169}
     - target: {fileID: 4729271880130860860, guid: 051cbb1f86f93604183c5f1e78db651c, type: 3}
       propertyPath: objectPool
       value: 
@@ -3417,6 +3419,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6372520891324939089, guid: 405c53f9a0e4bb040acff8278be48d42, type: 3}
+      propertyPath: ObjectPool
+      value: 
+      objectReference: {fileID: 1274737169}
+    - target: {fileID: 6372520891324939089, guid: 405c53f9a0e4bb040acff8278be48d42, type: 3}
       propertyPath: objectPool
       value: 
       objectReference: {fileID: 1274737169}
@@ -3481,6 +3487,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1592827955796031837, guid: 1e41831503f06ac409422d750285cb06, type: 3}
+      propertyPath: Hud
+      value: 
+      objectReference: {fileID: 1297191546}
     - target: {fileID: 1592827955796031837, guid: 1e41831503f06ac409422d750285cb06, type: 3}
       propertyPath: hud
       value: 

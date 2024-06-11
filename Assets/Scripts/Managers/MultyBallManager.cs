@@ -5,26 +5,20 @@ using UnityEngine.UIElements;
 
 public class MultyBallManager : MonoBehaviour
 {
-    public bool inGame;
-
-    public ObjectPool objectPool;
-    [SerializeField] Transform multyBallManager;
-    private void Start()
+    public ObjectPool ObjectPool;
+    private void Awake()
     {
-        if (objectPool.poolDictionary == null || objectPool.poolDictionary.Count == 0)
+        if (ObjectPool.poolDictionary == null || ObjectPool.poolDictionary.Count == 0)
         {
-            objectPool.InitializePool();
+            ObjectPool.InitializePool();
         }
     }
     public void CreateObjects(Vector3 position)
     {
-        if (!inGame)
-        {
-            GameObject mBall = objectPool.GetPooledObject("MultyBall");
-            mBall.transform.position = new Vector3(position.x, position.y, position.z - 1);
-            mBall.transform.SetParent(multyBallManager);
-            mBall.SetActive(true);
-        }
+        GameObject mBall = ObjectPool.GetPooledObject("MultyBall");
+        mBall.transform.position = new Vector3(position.x, position.y, position.z - 1);
+        mBall.transform.SetParent(GameManager.Instance.multyBallManager.transform);
+        mBall.SetActive(true);
     }
     public void ClearMultyBalls()
     {
@@ -36,9 +30,9 @@ public class MultyBallManager : MonoBehaviour
     }
     public void ReturnObjects(GameObject mBall)
     {
-        if (objectPool != null)
+        if (ObjectPool != null)
         {
-            objectPool.ReturnObjectToPool(mBall, "MultyBall");
+            ObjectPool.ReturnObjectToPool(mBall, "MultyBall");
         }
     }
 }
