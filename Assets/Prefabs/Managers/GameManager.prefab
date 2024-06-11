@@ -44,5 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc219bba27043554391abdd9f0da4f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockLeft: 0
-  hud: {fileID: 0}
+  BlockLeft: 0
+  BallsInGame: 0
+  PowerActive: 0
+  Hud: {fileID: 0}
+  brickManager: {fileID: 0}
+  playerController: {fileID: 0}
+  ballManager: {fileID: 0}
+  ball: {fileID: 0}
+  loseTrigger: {fileID: 0}
+  multyBallManager: {fileID: 0}
+  powerUpsManager: {fileID: 0}
+  level: 0

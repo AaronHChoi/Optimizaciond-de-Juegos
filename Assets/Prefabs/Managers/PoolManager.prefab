@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6013071224390491470}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46,5 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pools:
   - tag: Block
-    prefab: {fileID: 6145298442674631817, guid: d51f1c64cbda3254aa9a3b4054245acf, type: 3}
-    size: 27
+    prefab: {fileID: 2709404754778213009, guid: c20ff3563a7e2e641a1d4845c2e9e6eb, type: 3}
+    size: 18
+  - tag: Ball
+    prefab: {fileID: 5340913262282767444, guid: 67e4f1b3b5095394fb199c6247662545, type: 3}
+    size: 10
+  - tag: MultyBall
+    prefab: {fileID: 8451806453311986699, guid: db1ee7d3a6d0f3041a59ecef6f07ebe8, type: 3}
+    size: 1
