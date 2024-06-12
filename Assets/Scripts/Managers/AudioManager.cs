@@ -20,15 +20,6 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    //public void PlayMusic(AudioClip clip)
-    //{
-    //    musicSource.clip = clip;
-    //    musicSource.Play();
-    //}
-    //public void StopMusic()
-    //{
-    //    musicSource.Stop();
-    //}
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);

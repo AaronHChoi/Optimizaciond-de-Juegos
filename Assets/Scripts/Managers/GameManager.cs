@@ -81,10 +81,10 @@ public class GameManager : MonoBehaviour
         if(brickManager != null)
         {
             bricksToCreate = level * bricks;
-            brickManager.CreateBricks(bricksToCreate);
+            brickManager.CreateObjects(bricksToCreate);
             
             BlockLeft = bricksToCreate;
-            ballManager.CreateBalls(1);
+            ballManager.CreateObjects(1);
         }
         playerController.ResetPosition();
     }

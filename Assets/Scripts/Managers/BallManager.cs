@@ -2,21 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallManager : MonoBehaviour
+public class BallManager : ObjectManager
 {
-    public ObjectPool ObjectPool;
-
     Vector3 startPosition = new Vector3(-142f, 40.75f, -29.862f); 
     [SerializeField] Transform balls;
 
-    private void Awake()
-    {
-        if (ObjectPool.poolDictionary == null || ObjectPool.poolDictionary.Count == 0)
-        {
-            ObjectPool.InitializePool();
-        }
-    }
-    public void CreateBalls(int ballsToCreate)
+    public override void CreateObjects(int ballsToCreate)
     {
         for (int i = 0; i < ballsToCreate; i++)
         {
@@ -33,17 +24,14 @@ public class BallManager : MonoBehaviour
     }
     public void ClearBalls()
     {
-        BallArkanoid[] activeBalls = FindObjectsOfType<BallArkanoid>();
-        foreach (BallArkanoid ball in activeBalls)
-        {
-            ball.gameObject.SetActive(false);
-        }
+        ClearObjects<BallArkanoid>();
     }
     public void ReturnBall(GameObject ball)
     {
-        if (ObjectPool != null)
-        {
-            ObjectPool.ReturnObjectToPool(ball, "Ball");
-        }
+        ReturnObject(ball, "Ball");
+    }
+    public override void CreateObjects(Vector3 position)
+    {
+        throw new System.NotImplementedException();
     }
 }
