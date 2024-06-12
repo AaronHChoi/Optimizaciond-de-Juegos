@@ -18,10 +18,11 @@ public class MultyBall : MonoBehaviour, IUpdatable
     private void OnCollisionEnter(Collision collision)
     {
         var gameManager = GameManager.Instance;
-        if (collision.gameObject.tag == "PlayerPower")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "PlayerRight" || collision.gameObject.tag == "PlayerLeft")
         {
             AudioManager.Instance.PlaySFX(MultyBallSFX);
-            gameManager.ballManager.CreateObjects(1);
+            if(gameManager.PowerActive)
+                gameManager.ballManager.CreateObjects(2);
             gameManager.multyBallManager.ReturnObjects(this.gameObject);
             gameManager.PowerActive = false;
         } else if (collision.gameObject.tag == "Dead")
