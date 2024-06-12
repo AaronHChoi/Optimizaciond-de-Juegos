@@ -2,23 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BrickManager : MonoBehaviour
+public class BrickManager : ObjectManager
 {
-    public ObjectPool ObjectPool;
-
     [SerializeField] int rows = 3;
     [SerializeField] int columns = 9;
     [SerializeField] Vector3 startPosition;
     [SerializeField] Vector2 spacing;
     [SerializeField] Transform bricks;
-    private void Awake()
-    {
-        if (ObjectPool.poolDictionary == null || ObjectPool.poolDictionary.Count == 0)
-        {
-            ObjectPool.InitializePool();
-        }
-    }
-    public void CreateBricks(int bricksToCreate)
+    public override void CreateObjects(int bricksToCreate)
     {
         ClearBricks();
         int createdBricks = 0;
@@ -40,19 +31,17 @@ public class BrickManager : MonoBehaviour
     }
     public void ClearBricks()
     {
-        foreach (Transform brick in bricks)
-        {
-            brick.gameObject.SetActive(false);
-        }
+        ClearObjects<Brick>();
     }
     public void ReturnBrick(GameObject brick)
     {
-        if (ObjectPool != null)
-        {
-            Brick brickComponent = brick.GetComponent<Brick>();
-            if (brickComponent != null)
-                brickComponent.ResetBrick();
-            ObjectPool.ReturnObjectToPool(brick, "Block");
-        }
+        Brick brickComponent = brick.GetComponent<Brick>();
+        if (brickComponent != null)
+            brickComponent.ResetBrick();
+        ReturnObject(brick, "Block");
+    }
+    public override void CreateObjects(Vector3 position)
+    {
+        throw new System.NotImplementedException();
     }
 }

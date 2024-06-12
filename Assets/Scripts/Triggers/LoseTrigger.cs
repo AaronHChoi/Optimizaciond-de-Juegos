@@ -17,7 +17,7 @@ public class LoseTrigger : MonoBehaviour
             AudioManager.Instance.PlaySFX(LoseSFX);
             gameManager.LoseLife();
             gameManager.playerController.ResetPosition();
-            gameManager.ballManager.CreateBalls(1);
+            gameManager.ballManager.CreateObjects(1);
             gameManager.ResetScene();
         }
     }

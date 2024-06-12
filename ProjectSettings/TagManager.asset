@@ -19,6 +19,7 @@ TagManager:
   - MultyBall
   - MultiBall
   - Dead
+  - PlayerPower
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - Ball
   - Powers
   - Bricks
-  - 
+  - PlayerPower
   - 
   - 
   - 
