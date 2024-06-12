@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public BrickManager brickManager;
     public PlayerController playerController;
     public BallManager ballManager;
-    public BallArkanoid ball;
     public LoseTrigger loseTrigger;
     public MultyBallManager multyBallManager;
     public PowerUpsManager powerUpsManager;
