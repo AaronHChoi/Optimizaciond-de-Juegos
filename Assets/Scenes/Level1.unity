@@ -1604,7 +1604,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4233375635594120099, guid: 4675270864e504e448b6ec74c46f1fa3, type: 3}
       propertyPath: targetBlocksForPowerUp
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5685041386076143698, guid: 4675270864e504e448b6ec74c46f1fa3, type: 3}
       propertyPath: m_Name
